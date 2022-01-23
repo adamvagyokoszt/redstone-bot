@@ -13,10 +13,7 @@ bot.on("ready", async() => {
 
     let státuszok = [
         "Prefix: ?",
-        "Rolix Youtube",
-        "Fejlesztő: Ádám"
-        "Mesterfokon"
-    ]
+        "Fejlesztő: Ádám",
 
     setInterval(function() {
         let status = státuszok[Math.floor(Math.random()* státuszok.length)]
