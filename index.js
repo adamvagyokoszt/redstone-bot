@@ -229,4 +229,23 @@ bot.on("message", async message => {
         }
     }
 })
+client.on("message", async (message) => {
+ if(message.content.startsWith("!warn"))
+ let victim = message.mentions.users.first()
+ if(!victim) message.reply("mention someone to warn.")
+ else {
+ let embed = new Discord.MessageEmbed()
+ .setTitle("Warnings")
+ .setDescription(`${victim} got warned by ${message.author}!`)
+ .setColor("GREEN")
+ .setFooter(`Moderator : ${message.author.username}`)
+ .setTimestamp()
+ 
+ message.channel.send(embed)
+ }
+});
+
+
+
+
 bot.login(process.env.TOKEN)
