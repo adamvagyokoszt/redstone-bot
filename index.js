@@ -128,8 +128,8 @@ if(cmd === `${prefix}macska`){
 }
 
  if(cmd === `${prefix}help`){
-      message.channel.send("Parancsok még feljesztés alatt álnak egyenlőre moderációs parancsok vannak") 
-    }
+    message.channel.send("Parancsok: http://redstone.hupont.hu/ , Készítő: Ádám#9999 , A bot hostingja: https://dashboard.heroku.com/apps , ");
+}
     
     if(cmd === `${prefix}weather`){
         if(args[0]){
