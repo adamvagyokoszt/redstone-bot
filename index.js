@@ -104,6 +104,24 @@ setTimeout(() => {
     message.member.roles.remove(cd_role_id)
     }, 1000* cooldown_time)
 }
+if(cmd === `${prefix}szavazas`){
+    if(message.channel.type === 'dm') return message.reply("Itt nem tudod használni!");
+    if(args[0]){
+        let szavazasembed = new Discord.MessageEmbed()
+        .setAuthor(message.author.tag + ` | Szavazást indított!`)
+        .setDescription(args.join(" "))
+        .setColor("RANDOM")
+        .setTimestamp(message.createdAt)
+        .setFooter(bot.user.username)
+
+        message.channel.send(szavazasembed).then(async msg => {
+            await msg.react("✅")
+            await msg.react("❌")
+        })
+    } else {
+        message.reply("Kérlek add meg a szavazást!")
+    }
+} 
 
 if(cmd === `${prefix}macska`){
      let msg = await message.channel.send("Macska betöltése🐈...")
