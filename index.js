@@ -242,45 +242,6 @@ if(cmd === `${prefix}macska`){
     ///////////////////////BANxKICK///////////////////////
 
     
-    
-if(cmd === `${prefix}ban`){
-        if (!message.member.hasPermission("BAN_MEMBERS")) return message.reply("HIBA! **Nincs jogod ehhez a parancshoz! Szükséges jog:** `Tagok kirúgása!`")
-        let ban_user = message.mentions.members.first();
-        if(args[0] && ban_user){
-
-            if(args[1]){
-
-                let KickEmbed = new Discord.MessageEmbed()
-                .setTitle("BAN")
-                .setColor("GREEN")
-                .setDescription(`**Bannolta:** ${message.author.tag}\n**Bannolva lett:** ${ban_user.user.tag}\n**Ban indoka:** ${args.slice(1).join(" ")}`)
-
-            message.channel.send(BanEmbed);
-
-                ban_user.ban(args.slice(1).join(" "));
-
-            } else {
-            let parancsEmbed = new Discord.MessageEmbed()
-            .setTitle("Parancs használata:")
-            .addField(`\`${prefix}ban <@név> [indok]\``, "RedstoneBot")
-            .setColor("GREEN")
-            .setDescription("HIBA: Kérlek adj meg egy indokot!!")
-
-            message.channel.send(parancsEmbed);
-            }
-
-        } else {
-            let parancsEmbed = new Discord.MessageEmbed()
-            .setTitle("Parancs használata:")
-            .addField(`\`${prefix}ban <@név> [indok]\``, "RedstoneBot")
-            .setColor("GREEN")
-            .setDescription("HIBA: Kérlek említs meg egy embert!")
-
-            message.channel.send(parancsEmbed);
-
-        }
-    }
-
 
     if(cmd === `${prefix}kick`){
         if (!message.member.hasPermission("KICK_MEMBERS")) return message.reply("HIBA! **Nincs jogod ehhez a parancshoz! Szükséges jog:** `Tagok kirúgása!`")
@@ -319,5 +280,6 @@ if(cmd === `${prefix}ban`){
 
         }
     }
+
 })
 bot.login(process.env.TOKEN)
