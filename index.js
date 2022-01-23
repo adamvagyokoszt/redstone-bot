@@ -105,7 +105,7 @@ bot.on("message", async message => {
         message. channel. send("Pinging..."). then(m =>{
         var ping = m. createdTimestamp - message. createdTimestamp;
         var botPing = Math. round(bot. pi);
-        m.edit(`ÁdámBot pingje:\n ${ping}ms`);
+        m.edit(`RedstoneBot pingje:\n ${ping}ms`);
         });
       }
 
