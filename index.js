@@ -144,6 +144,22 @@ if(cmd === `${prefix}macska`){
 
      message.channel.send(catEmbed)
 }
+    if(cmd === `${prefix}meme`){
+        if(message.channel.type === 'dm') return message.reply("Itt nem tudod használni!");
+        const subreddits = ["dankmeme", "meme", "me_irl"]
+        const random = subreddits[Math.floor(Math.random() * subreddits.length)]
+
+        const IMG = await randomPuppy(random)
+        const MemeEmbed = new Discord.MessageEmbed()
+        .setColor("RANDOM")
+        .setImage(IMG)
+        .setTitle(`Keresési szöveg: ${random} (KATT IDE!)`)
+        .setURL(`https://www.reddit.com/r/${random}`)
+
+        message.channel.send(MemeEmbed)
+    } 
+
+
 
  if(cmd === `${prefix}help`){
     message.channel.send("Parancsok: http://redstone.hupont.hu/ , Készítő: Ádám#9999 , A bot hostingja: https://dashboard.heroku.com/apps , ");
