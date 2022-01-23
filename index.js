@@ -280,7 +280,7 @@ if(cmd === `${prefix}ban`){
 
         }
     }
-})
+
 
     if(cmd === `${prefix}kick`){
         if (!message.member.hasPermission("KICK_MEMBERS")) return message.reply("HIBA! **Nincs jogod ehhez a parancshoz! Szükséges jog:** `Tagok kirúgása!`")
