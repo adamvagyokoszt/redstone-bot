@@ -95,7 +95,7 @@ if(cmd === `${prefix}work`){
 
 
     money[message.author.id] = {
-        money: selfmoney + random_money,
+        money: selfMoney + random_money,
         user_id: message.author.id
 }
 
