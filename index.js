@@ -12,10 +12,10 @@ bot.on("ready", async() => {
     console.log(`${bot.user.username} sikeresn elindult!`)
 
     let státuszok = [
-        `${bot.guilds.cache.size}  szerver`,
         "Prefix: ?",
-        "?help",
+        "Rolix Youtube",
         "Fejlesztő: Ádám"
+        "Mesterfokon"
     ]
 
     setInterval(function() {
@@ -230,13 +230,13 @@ bot.on("message", async message => {
     }
 })
 client.on("message", async (message) => {
- if(message.content.startsWith("!warn"))
+ if(message.content.startsWith("?warn"))
  let victim = message.mentions.users.first()
  if(!victim) message.reply("mention someone to warn.")
  else {
  let embed = new Discord.MessageEmbed()
  .setTitle("Warnings")
- .setDescription(`${victim} got warned by ${message.author}!`)
+ .setDescription(`${victim} figyelmeztetve. ${message.author} által!`)
  .setColor("GREEN")
  .setFooter(`Moderator : ${message.author.username}`)
  .setTimestamp()
