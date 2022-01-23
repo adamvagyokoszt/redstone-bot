@@ -66,6 +66,46 @@ bot.on("message", async message => {
             money: selfMoney + 1
         }
     }
+
+if(cmd === `${prefix}work`){
+    let cd_role_id = "934821621888340059";
+    let cooldown_time = "10";
+
+    if(message.member.roles.cache.has(cd_role_id)) return message.reply(`Ezt a parancsot 10 percenként használhatod`)
+
+    message.member.roles.add(cd_role_id)
+
+    let üzenetek = ["Jó munkát végeztél","Feltörted a haverod gépét","Feltörted a főnököd gépét","Túl óráztál"]
+    let random_üzenet_szam = Math.floor(Math.random()*üzenetek.length)
+
+    let random_money = Math.floor(Math.random()*500 +1)
+
+    let workEmbed = new Discord.MessageEmbed()
+    .setTitle("Munka")
+
+    .addField(`${üzenetek[random_üzenet_szam]}` , ` A számládhoz került: ${random_money} FT!`)
+
+    .setColor("RANDOM")
+
+    .setTimestamp(message.createdAt)
+
+    .setFooter(botname)
+
+    message.channel.send(workEmbed)
+
+
+    money[message.author.id] = {
+        money: selfmoney + random_money,
+        user_id: message.author.id
+}
+
+setTimeout(() => {
+    message.member.roles.remove(cd_role_id)
+    }, 1000* cooldown_time)
+}
+
+
+
  if(cmd === `${prefix}help`){
       message.channel.send("Parancsok még feljesztés alatt álnak egyenlőre moderációs parancsok vannak") 
     }
