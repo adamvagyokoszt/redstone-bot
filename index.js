@@ -68,7 +68,7 @@ bot.on("message", async message => {
     }
 
 if(cmd === `${prefix}work`){
-    let cd_role_id = "934821621888340059";
+    let cd_role_id = "879320935566565438";
     let cooldown_time = "10";
 
     if(message.member.roles.cache.has(cd_role_id)) return message.reply(`Ezt a parancsot 10 percenként használhatod`)
