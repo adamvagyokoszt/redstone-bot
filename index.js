@@ -5,6 +5,7 @@ const fs = require("fs");
 const money = require("./money.json")
 var weather = require('weather-js');
 const ms = require("ms");
+const superagent = require('superagent');
 
 let botname = "Redstone Bot"
 
