@@ -26,14 +26,6 @@ bot.on("ready", async() => {
 })
 
 
- if(cmd === `${prefix}hello`){
-     message.channel.send("Hello.")
- }
-
-
-
-
-
 bot.on("message", async message => {
     let MessageArray = message.content.split(" ");
     let cmd = MessageArray[0];
