@@ -28,6 +28,7 @@ bot.on("ready", async() => {
 
  if(cmd === `${prefix}help`){
      message.channel.send("Hello én RedstoneBot vagyok. A parancsaim még késölnek addig is a Moderációs helyzetettre vagyok jó.")
+ }
 
 
 
