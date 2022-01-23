@@ -66,7 +66,9 @@ bot.on("message", async message => {
             money: selfMoney + 1
         }
     }
-
+ if(cmd === `${prefix}help`){
+      message.channel.send("Parancsok még feljesztés alatt álnak egyenlőre moderációs parancsok vannak") 
+    }
     
     if(cmd === `${prefix}weather`){
         if(args[0]){
