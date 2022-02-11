@@ -178,7 +178,7 @@ if(cmd === `${prefix}giveaway`){
     if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send("Ehhez nincs jogod! Szükséges jog: Adminisztrátor")
 
     var tárgy = "";
-    var idő;
+    var ido;
     var winnerCount;
 
     for (var i = 1; i < args.length; i++){
@@ -187,9 +187,9 @@ if(cmd === `${prefix}giveaway`){
 
     }
 }
-idő  args[0];
+ido   args[0];
 
-if(!idő){
+if(!ido){
     return message.reply("Kérlek add meg egy időt! Formátumok s másodperc, m perc , h óra d nap.")
 }
 if(!tárgy){
@@ -200,7 +200,7 @@ return message.reply("Kérlek adj meg egy nyeremént is.")
   .setColor("RED")
   .setTitle("🎉 Nyereményjáték 🎉")
   .setDescription(`Nyeremény: **${tárgy}**`)
-  .addField("`Időtartam`", ms(ms(idő), {long:true}), true)
+  .addField("`Időtartam`", ms(ms(ido), {long:true}), true)
   .setFooter("Jelentkezéshez reagálj a 🎉 emojira!")
   var embedSend = await message.channel.send(Gembed);
   embedSend.react("🎉");
@@ -228,7 +228,7 @@ return message.reply("Kérlek adj meg egy nyeremént is.")
      } else {
          message.channel.send(`🎉🎉🎉 **${winner.toString()}** Gratulálok! A nyereményed: **${tárgy}**. 🎉🎉🎉`);
      }
-},  ms(idő))
+},  ms(ido))
     
 
 
