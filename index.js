@@ -26,6 +26,22 @@ bot.on("ready", async() => {
     }, 5000)
 })
 
+bot.on("guildMemberAdd", (member) => {
+    const rulesChanel = member.guild.rulesChannelID;
+    const channelID = "730430575046819914"
+
+    const message = `Szia <@${member.id}>! Üdv itt a Rolix Fan klub szerveren. Szabályzat:${member.guild.channels.cache.get(rulesChanel).toString()}`
+
+    const channel = member.guild.channels.cache.get(channelID);
+    channel.send(message)
+})
+bot.on("guildMemberRemove", (member) => {
+    const channelID = "730430575046"
+
+    const  message = `Viszlát <@${member.id}>! Remélem vissza jössz egyszer!`
+    const channel = member.guild.channels.cache.get(channelID);
+    channel.send(message)
+}) 
 
 bot.on("message", async message => {
     let MessageArray = message.content.split(" ");
@@ -248,27 +264,7 @@ if(cmd === `${prefix}macska`){
         }
     }
 
- bot.on("guildMemberAdd", (member) => {
-    const rulesChanel = member.guild.rulesChannelID;
-    const channelID = "730430575046819914";
-
-    if(!channelID) return;
-    if(!rulesChanel) return;
-
-    const message = `Szia <@${member.id}>! Üdv itt a Rolix Fan klub szerveren. Szabályzat:${member.guild.channels.cache.get(rulesChanel).toString()}`
-
-    const channel = member.guild.channels.cache.get(channelID);
-    channel.send(message)
-})
-bot.on("guildMemberRemove", (member) => {
-    const channelID = member.guild.systemChannelID;
-
-    if(!channelID) return;
-
-    const  message = `Viszlát <@${member.id}>! Remélem vissza jössz egyszer!`
-    const channel = member.guild.channels.cache.get(channelID);
-    channel.send(message)
-}) 
+ 
 
 
     if (cmd === `${prefix}clear`) {
