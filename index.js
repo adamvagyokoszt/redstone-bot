@@ -173,67 +173,7 @@ if(cmd === `${prefix}szavazas`){
         message.reply("Kérlek add meg a szavazást!")
     }
 } 
-if(cmd === `${prefix}giveaway`){
-    const MessageArray = message.content.split(" ")
-    if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send("Ehhez nincs jogod! Szükséges jog: Adminisztrátor")
 
-    var tárgy = "";
-    var ido;
-    var winnerCount;
-
-    for (var i = 1; i < args.length; i++){
-        tárgy +  (args [i] + " ")
-        console.log(tárgy)
-
-    }
-}
-ido = args[0];
-
-if(!ido){
-    return message.reply("Kérlek add meg egy időt! Formátumok s másodperc, m perc , h óra d nap.")
-}
-if(!tárgy){
-return message.reply("Kérlek adj meg egy nyeremént is.")
-}
-    
-  var Gembed = new Discord.MessageEmbed()
-  .setColor("RED")
-  .setTitle("🎉 Nyereményjáték 🎉")
-  .setDescription(`Nyeremény: **${tárgy}**`)
-  .addField("`Időtartam`", ms(ms(ido), {long:true}), true)
-  .setFooter("Jelentkezéshez reagálj a 🎉 emojira!")
-  var embedSend = await message.channel.send(Gembed);
-  embedSend.react("🎉");
-
- setTimeout(async()  > {
-     try{
-         const peopleReactedBOT      await embedSend.reactions.get("🎉").users.fetch();
-         var peopleReacted = peopleReactedBOT.array().filter( u.id !== bog.user.id);
-     } catch(e){
-           return message.channel.send("Hiba történt")
-     }
-     war winner;
-
-     if(people.Reacted.length  <=0){
-             return message.channel.send("Nem reagált elég ember")
-
-     } else  {
-          var index   Math.floor(Math.random()*peopleReacted.length);
-          winner = peopleReacted[index]
-
-     }
-
-     if(!winner) {
-         message.channel.send("Hiba történt")
-     } else {
-         message.channel.send(`🎉🎉🎉 **${winner.toString()}** Gratulálok! A nyereményed: **${tárgy}**. 🎉🎉🎉`);
-     }
-},  ms(ido))
-    
-
-
-
-})
 
 
 
@@ -361,7 +301,60 @@ if(cmd === `${prefix}macska`){
         }
     }
 
+ if(cmd === `${prefix}giveaway`){
+            const messageArray = message.content.split(" ");
+            if(!message.member.hasPermission("KICK_MEMBERS" || "BAN_MEMBERS")) return message.channel.send("Ehhez a parancshoz nincs jogod!")
  
+            let tárgy = "";
+            let idő;
+            let winnerCount;
+ 
+            for (let i = 1; i < args.length; i++){
+                tárgy += (args[i] + " ")
+                console.log(tárgy)
+            }
+ 
+            idő = args[0];
+ 
+        if(!idő){
+            return message.reply("Kérlek adj meg egy idő intervallumot! pl: 100s, 5h, 2d")
+        }
+        if(!tárgy){
+            return message.reply("Kérlek add meg a nyereményjáték tárgyát!")
+        }
+ 
+        var Gembed = new Discord.MessageEmbed()
+        .setColor("RANDOM")
+        .setTitle("Nyereményjáték!!!!")
+        .setDescription(`**${tárgy}**`)
+        .addField("`Időtartam:`", ms(ms(idő), {long: true}), true)
+        .setFooter("A jelentkezéshe reagálj ezzel: 🎉")
+        var embedSend = await message.channel.send(Gembed);
+        embedSend.react("🎉");
+ 
+        setTimeout(async() => {
+            try{
+                const peopleReactedBOT =  await embedSend.reactions.cache.get("🎉").users.fetch();
+                var peopleReacted = peopleReactedBOT.array().filter(u => u.id !== bot.user.id);
+            }catch(e){
+                return message.channel.send(`Hiba törtét a **${tárgy}** sorsolása során! Hiba: `+"`"+e+"`")
+            }
+            var winner;
+ 
+            if(peopleReacted.length <= 0){
+                return message.channel.send("Senki nem jelentkezett a nyereményjátékra! :C")
+            } else {
+                var index = Math.floor(Math.random() * peopleReacted.length);
+                winner = peopleReacted[index]
+            }
+ 
+            if(!winner) {
+                message.channel.send("Hiba történt a sorsolás során!")
+            } else {
+                message.channel.send(`🎉🎉🎉🎉 **${winner.toString()}** megnyerte ezt: **${tárgy}**`);
+            }
+        }, ms(idő))
+        }
 
 
     if (cmd === `${prefix}clear`) {
