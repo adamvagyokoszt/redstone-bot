@@ -196,7 +196,7 @@ if(!tárgy){
 return message.reply("Kérlek adj meg egy nyeremént is.")
 }
     
-  var Gembed = new Discord MessageEmbed()
+  var Gembed = new Discord.MessageEmbed()
   .setColor("RED")
   .setTitle("🎉 Nyereményjáték 🎉")
   .setDescription(`Nyeremény: **${tárgy}**`)
