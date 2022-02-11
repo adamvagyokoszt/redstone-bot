@@ -324,8 +324,8 @@ if(cmd === `${prefix}macska`){
         }
  
         var Gembed = new Discord.MessageEmbed()
-        .setColor("RANDOM")
-        .setTitle("Nyereményjáték!!!!")
+        .setColor("RED")
+        .setTitle("🎉 Nyereményjáték 🎉")
         .setDescription(`**${tárgy}**`)
         .addField("`Időtartam:`", ms(ms(idő), {long: true}), true)
         .setFooter("A jelentkezéshe reagálj ezzel: 🎉")
@@ -351,7 +351,7 @@ if(cmd === `${prefix}macska`){
             if(!winner) {
                 message.channel.send("Hiba történt a sorsolás során!")
             } else {
-                message.channel.send(`🎉🎉🎉🎉 **${winner.toString()}** megnyerte ezt: **${tárgy}**`);
+                message.channel.send(`🎉🎉🎉🎉 **${winner.toString()}** Gratulálok! Nyereményed: **${tárgy}** 🎉🎉🎉🎉`);
             }
         }, ms(idő))
         }
