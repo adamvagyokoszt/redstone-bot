@@ -36,7 +36,8 @@ bot.on("guildMemberAdd", (member) => {
     channel.send(message)
 })
 bot.on("guildMemberRemove", (member) => {
-    const channelID = "730430575046"
+    const channelID = "730430575046819914"
+
 
     const  message = `Viszlát <@${member.id}>! Remélem vissza jössz egyszer!`
     const channel = member.guild.channels.cache.get(channelID);
