@@ -123,6 +123,7 @@ if(cmd === `${prefix}szavazas`){
     }
 } 
 
+
 if(cmd === `${prefix}macska`){
      let msg = await message.channel.send("Macska betöltése🐈...")
      
@@ -247,7 +248,28 @@ if(cmd === `${prefix}macska`){
         }
     }
 
- 
+ bot.on("guildMemberAdd", (member) => {
+    const rulesChanel = member.guild.rulesChannelID;
+    const channelID = "730430575046819914";
+
+    if(!channelID) return;
+    if(!rulesChanel) return;
+
+    const message = `Szia <@${member.id}>! Üdv itt a Rolix Fan klub szerveren. Szabályzat:${member.guild.channels.cache.get(rulesChanel).toString()}`
+
+    const channel = member.guild.channels.cache.get(channelID);
+    channel.send(message)
+})
+bot.on("guildMemberRemove", (member) => {
+    const channelID = member.guild.systemChannelID;
+
+    if(!channelID) return;
+
+    const  message = `Viszlát <@${member.id}>! Remélem vissza jössz egyszer!`
+    const channel = member.guild.channels.cache.get(channelID);
+    channel.send(message)
+}) 
+
 
     if (cmd === `${prefix}clear`) {
         if (message.member.permissions.has('KICK_MEMBERS')) {
