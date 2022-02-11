@@ -174,7 +174,7 @@ if(cmd === `${prefix}szavazas`){
     }
 } 
 if(cmd === `${prefix}giveaway`){
-    const messageArray   message.content.spilit(" ");
+    const MessageArray = message.content.split(" ")
     if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send("Ehhez nincs jogod! Szükséges jog: Adminisztrátor")
 
     var tárgy = "";
