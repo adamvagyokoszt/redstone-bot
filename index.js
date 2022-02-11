@@ -181,7 +181,7 @@ if(cmd === `${prefix}giveaway`){
     var idő;
     var winnerCount;
 
-    for (var i = 1; i < args length; i++){
+    for (var i = 1; i < args.length; i++){
         tárgy +  (args [i] + " ")
         console.log(tárgy)
 
