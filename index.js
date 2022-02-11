@@ -123,7 +123,7 @@ setTimeout(() => {
 
 
 if(cmd === `${prefix}napiüzi`){
-    let cd_role_id = "879320935566565438";
+    let cd_role_id = "941768580670816317";
     let cooldown_time = "1440";
 
     if(message.member.roles.cache.has(cd_role_id)) return message.reply(`Ezt a parancsot 24 óránként használhatod`)
