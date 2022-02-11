@@ -173,6 +173,68 @@ if(cmd === `${prefix}szavazas`){
         message.reply("Kérlek add meg a szavazást!")
     }
 } 
+if(cmd === `${prefix}giveaway`){
+    const messageArray   message.content.spilit(" ");
+    if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send("Ehhez nincs jogod! Szükséges jog: Adminisztrátor")
+
+    var tárgy = "";
+    var idő;
+    var winnerCount;
+
+    for (var i = 1; i < args length; i++){
+        tárgy +  (args [i] + " ")
+        console.log(tárgy)
+
+    }
+}
+idő  args[0];
+
+if(!idő){
+    return message.reply("Kérlek add meg egy időt! Formátumok s másodperc, m perc , h óra d nap.")
+}
+if(!tárgy){
+return message.reply("Kérlek adj meg egy nyeremént is.")
+}
+    
+  var Gembed = new Discord MessageEmbed()
+  .setColor("RED")
+  .setTitle("🎉 Nyereményjáték 🎉")
+  .setDescription(`Nyeremény: **${tárgy}**`)
+  .addField("`Időtartam`", ms(ms(idő), {long:true}), true)
+  .setFooter("Jelentkezéshez reagálj a 🎉 emojira!")
+  var embedSend = await message.channel.send(Gembed);
+  embedSend.react("🎉");
+
+ setTimeout(async()  > {
+     try{
+         const peopleReactedBOT      await embedSend.reactions.get("🎉").users.fetch();
+         var peopleReacted = peopleReactedBOT.array().filter( u.id !== bog.user.id);
+     } catch(e){
+           return message.channel.send("Hiba történt")
+     }
+     war winner;
+
+     if(people.Reacted.length  <=0){
+             return message.channel.send("Nem reagált elég ember")
+
+     } else  {
+          var index   Math.floor(Math.random()*peopleReacted.length);
+          winner = peopleReacted[index]
+
+     }
+
+     if(!winner) {
+         message.channel.send("Hiba történt")
+     } else {
+         message.channel.send(`🎉🎉🎉 **${winner.toString()}** Gratulálok! A nyereményed: **${tárgy}**. 🎉🎉🎉`);
+     }
+},  ms(idő))
+    
+
+
+
+})
+
 
 
 if(cmd === `${prefix}macska`){
