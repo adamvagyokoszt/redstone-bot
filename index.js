@@ -120,6 +120,40 @@ setTimeout(() => {
     message.member.roles.remove(cd_role_id)
     }, 1000* cooldown_time)
 }
+
+
+if(cmd === `${prefix}napiüzi`){
+    let cd_role_id = "879320935566565438";
+    let cooldown_time = "1440";
+
+    if(message.member.roles.cache.has(cd_role_id)) return message.reply(`Ezt a parancsot 24 óránként használhatod`)
+
+    message.member.roles.add(cd_role_id)
+
+    let üzenetek = ["Amit egyszer megcsináltál soha nem fordíthatod vissza!","Soha ne vidd túlzásba semmit","Légy elégedett magadal","Légy mindig naprakész"]
+    let random_üzenet_szam = Math.floor(Math.random()*üzenetek.length)
+
+    let random_money = Math.floor(Math.random()*500 +1)
+
+    let workEmbed = new Discord.MessageEmbed()
+    .setTitle("Napi üzi")
+
+    .addField(`${üzenetek[random_üzenet_szam]}`)
+
+    .setColor("RANDOM")
+
+    .setTimestamp(message.createdAt)
+
+    .setFooter(botname)
+
+    message.channel.send(workEmbed)
+
+
+    
+setTimeout(() => {
+    message.member.roles.remove(cd_role_id)
+    }, 1000* cooldown_time)
+}
 if(cmd === `${prefix}szavazas`){
     if(message.channel.type === 'dm') return message.reply("Itt nem tudod használni!");
     if(args[0]){
