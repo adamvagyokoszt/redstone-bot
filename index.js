@@ -187,7 +187,7 @@ if(cmd === `${prefix}giveaway`){
 
     }
 }
-ido   args[0];
+ido = args[0];
 
 if(!ido){
     return message.reply("Kérlek add meg egy időt! Formátumok s másodperc, m perc , h óra d nap.")
