@@ -482,13 +482,47 @@ if(cmd === `${prefix}ötlet`){
     } else {
         let he_embed = new Discord.MessageEmbed()
             .setAuthor(message.author.tag + `| Használat`)
-            .setDescription(`${prefix}ötlet  <ötleted>`)
+            .setDescription(`${prefix}ötlet <pingeld meg magad <ötleted>`)
             .setColor("RANDOM")
             .setTimestamp(message.createdAt)
             .setFooter(bot.user.username)
 
             message.channel.send(he_embed);
     }
+}
+
+if(cmd === `${prefix}hirdetés`){
+    if(args[1]){
+
+        message.channel.send("A ötletedet sikeresen elküldtük!")
+
+        let report_channel = "940166222861983745";
+
+        let report_embed = new Discord.MessageEmbed()
+            .setAuthor(`Hirdetés`)
+            .setDescription("Ötlet:" + args.join(" ").slice(args[0].length))
+            .setColor("RANDOM")
+            .setTimestamp(message.createdAt)
+            .setFooter(bot.user.username)
+            if(selfMoney < price) return message.reply(`Nincs pénzed hogy tudj hirdetni! Egyenleged: ${selfMoney}FT.`)
+            bot.channels.cache.get(report_channel).send(report_embed);
+
+    } else {
+        let he_embed = new Discord.MessageEmbed()
+            .setAuthor(message.author.tag + `| Használat`)
+            .setDescription(`${prefix}hirdetés <pingeld meg magad <ötleted>`)
+            .setColor("RANDOM")
+            .setTimestamp(message.createdAt)
+            .setFooter(bot.user.username)
+
+            message.channel.send(he_embed);
+
+            money[message.author.id] = {
+                money: selfMoney - pay_money,
+                user_id: message.author.id
+
+    }
+
 }
 
     if(cmd === `${prefix}embedsay`){
