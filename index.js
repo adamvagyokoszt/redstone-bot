@@ -541,43 +541,20 @@ if(cmd === `${prefix}macska`){
 
     
 
-   if(cmd === `${prefix}ban`){
-        let ban_user = message.mentions.members.first();
-        if(args[0] && ban_user){
-
-            if(args[1]){
-
-                let BanEmbed = new Discord.MessageEmbed()
-                .setTitle("BAN")
-                .setColor("RED")
-                .setDescription(`**Banolta:** ${message.author.tag}\n**Banolva lett:** ${kick_user.user.tag}\n**Ban indoka:** ${args.slice(1).join(" ")}`)
-
-            message.channel.send(BanEmbed);
-
-                ban_user.ban(args.slice(1).join(" "));
-
-            } else {
-            let parancsEmbed = new Discord.MessageEmbed()
-            .setTitle("Parancs használata:")
-            .addField(`\`${prefix}ban <@név> [indok]\``, "˘˘˘")
-            .setColor("BLUE")
-            .setDescription("HIBA: Kérlek adj meg egy indokot!!")
-
-            message.channel.send(parancsEmbed);
-            }
-
+  if(cmd === `${prefix}tempban`) {
+        let user = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
+        let rawreason = args[2];
+        let bantime = args[1];
+        let reason = args.slice(2).join(' ')
+        if (!message.member.hasPermission("BAN_MEMBERS")) return message.reply("HIBA! **Nincs jogod ehhez a parancshoz! Szükséges jog:** `Tagok kitiltása!`")
+        if(!args[0] || !args[1] || !args[2] || isNaN(bantime)) return message.reply("HIBA! **Helyes használat: {prefix}ban <@felhasználó> [idő{(nap) max 7} <indok>**");
+        if (user.hasPermission("BAN_MEMBERS") || user.hasPermission("ADMINISTRATOR")) return message.reply("HIBA! **Magaddal egyen rangú tagot, vagy nagyobbat nem bannolhatsz ki!**");
+        if(user.ban({days: bantime, reason: reason})) {
+            message.reply("**Sikeresen kitiltottad a következő felhasználót:** (" + user.user.tag + ")")
         } else {
-            let parancsEmbed = new Discord.MessageEmbed()
-            .setTitle("Parancs használata:")
-            .addField(`\`${prefix}ban <@név> [indok]\``, "˘˘˘")
-            .setColor("BLUE")
-            .setDescription("HIBA: Kérlek említs meg egy embert!")
-
-            message.channel.send(parancsEmbed);
-
+            message.reply("HIBA! **Nincs jogom bannolni ezt az embert.**");
         }
     }
-
 
 
 if(cmd === `${prefix}kick`){
