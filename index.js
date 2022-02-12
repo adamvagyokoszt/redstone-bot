@@ -471,9 +471,8 @@ if(cmd === `${prefix}ötlet`){
         let report_channel = "871043112653439036";
 
         let report_embed = new Discord.MessageEmbed()
-            .setAuthor(message.mentions.members.first().user.tag + `| Ötlete`)
+            .setAuthor(`Ötlete`)
             .setDescription("Ötlet:" + args.join(" ").slice(args[0].length))
-            .addField("Ötlet adó:", message.author.tag)
             .setColor("RANDOM")
             .setTimestamp(message.createdAt)
             .setFooter(bot.user.username)
@@ -483,7 +482,7 @@ if(cmd === `${prefix}ötlet`){
     } else {
         let he_embed = new Discord.MessageEmbed()
             .setAuthor(message.author.tag + `| Használat`)
-            .setDescription(`${prefix}report @<név> <indok>`)
+            .setDescription(`${prefix}ötlet  <ötleted>`)
             .setColor("RANDOM")
             .setTimestamp(message.createdAt)
             .setFooter(bot.user.username)
