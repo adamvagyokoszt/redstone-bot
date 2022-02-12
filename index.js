@@ -286,26 +286,6 @@ if(cmd === `${prefix}shop`){
             message.channel.send(ShopEmbed);
     }
 
-if(cmd === `${prefix}avatar`){
-            if(message.channel.type === 'dm') return message.reply("Itt nem tudod használni!");
-        const avatarembed = new Discord.MessageEmbed()
- 
-        if(!message.mentions.users.first()){
-            .setTitle("Te avatárod:")
-            .setThumbnail(message.author.displayAvatarURL())
-            .setDescription("Ez a te avatárod!")
-            .setColor("RANDOM")
-            return message.channel.send(avatarembed)
-        }else{
-            const user = message.mentions.users.first()
-            .setTitle(`${user.tag}'s Avatárja:`)
-            .setThumbnail(user.displayAvatarURL())
-            .setDescription(`Ez a ${user.tag}'s avatárja.`)
-            .setColor('RANDOM')
-            .setFooter("Avatar command")
-            return message.channel.send(avatarembed)
-        }
-    } 
 
 
 
