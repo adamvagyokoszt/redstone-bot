@@ -286,6 +286,27 @@ if(cmd === `${prefix}shop`){
             message.channel.send(ShopEmbed);
     }
 
+if(cmd === `${prefix}avatar`){
+            if(message.channel.type === 'dm') return message.reply("Itt nem tudod használni!");
+        const avatarembed = new Discord.MessageEmbed()
+ 
+        if(!message.mentions.users.first()){
+            embed.setTitle("Te avatárod:")
+            embed.setThumbnail(message.author.displayAvatarURL())
+            embed.setDescription("Ez a te avatárod!")
+            embed.setColor("RANDOM")
+            return message.channel.send(avatarembed)
+        }else{
+            const user = message.mentions.users.first()
+            embed.setTitle(`${user.tag}'s Avatárja:`)
+            embed.setThumbnail(user.displayAvatarURL())
+            embed.setDescription(`Ez a ${user.tag}'s avatárja.`)
+            embed.setColor('RANDOM')
+            embed.setFooter("Avatar command")
+            return message.channel.send(avatarembed)
+        }
+    } 
+
 
 
     if(cmd === `${prefix}vasarol-vip`){
