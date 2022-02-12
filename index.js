@@ -222,37 +222,6 @@ if(cmd === `${prefix}work`){
         money: selfMoney + random_money,
         user_id: message.author.id
 }
-if(cmd === `${prefix}óra`){
-    let cd_role_id = "942021138274455562";
-    let cooldown_time = "60";
-
-    if(message.member.roles.cache.has(cd_role_id)) return message.reply(`Ezt a parancsot 60 percenként használhatod`)
-
-    message.member.roles.add(cd_role_id)
-
-
-    let óraEmbed = new Discord.MessageEmbed()
-    .setTitle("Órai Pénz")
-
-    .addField(` A számládhoz került: 500 FT!`)
-
-    .setColor("RANDOM")
-
-    .setTimestamp(message.createdAt)
-
-    .setFooter(botname)
-
-    message.channel.send(óraEmbed)
-
-
-    money[message.author.id] = {
-        money: selfMoney + 500 ,
-        user_id: message.author.id
-
-setTimeout(() => {
-    message.member.roles.remove(cd_role_id)
-    }, 1000* cooldown_time)
-}
 
 if(cmd === `${prefix}lb`){
         let toplist = Object.entries(money)
