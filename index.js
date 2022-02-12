@@ -327,6 +327,7 @@ setTimeout(() => {
     }, 1000* cooldown_time)
 }
 if(cmd === `${prefix}szavazas`){
+    if(!message.member.hasPermission("KICK_MEMBERS" || "BAN_MEMBERS")) return message.channel.send("Ehhez a parancshoz nincs jogod!")
     if(message.channel.type === 'dm') return message.reply("Itt nem tudod használni!");
     if(args[0]){
         let szavazasembed = new Discord.MessageEmbed()
@@ -434,7 +435,8 @@ if(cmd === `${prefix}macska`){
 
       
 
-    if(cmd === `${prefix}say`){
+    if(cmd === `${prefix}embedsay`){
+        if(!message.member.hasPermission("KICK_MEMBERS" || "BAN_MEMBERS")) return message.channel.send("Ehhez a parancshoz nincs jogod!")
         let szöveg = args.join(" ");
         if(szöveg) {
             let Embed = new Discord.MessageEmbed()
@@ -453,24 +455,7 @@ if(cmd === `${prefix}macska`){
     }
 
     
-    if(cmd === `${prefix}ötlet`){
-        let szöveg = args.join(" ");
-
-        if(szöveg) {
-            let Embed = new Discord.MessageEmbed()
-        .setColor("GREEN")
-
-        .setAuthor(message.author.username + `|Ötletett köldött🧱`)
-
-        .addField("Szöveg:", szöveg)
-
-        .setFooter(`${botname} | ${message.createdAt}`)
     
-        message.channel.send(Embed)
-        } else {
-            message.reply("írj ötletet !")
-        }
-    }
 
  if(cmd === `${prefix}giveaway`){
             const messageArray = message.content.split(" ");
@@ -556,7 +541,45 @@ if(cmd === `${prefix}macska`){
 
     
 
-    if(cmd === `${prefix}kick`){
+    if(cmd === `${prefix}ban`){
+        if (!message.member.hasPermission("BAN_MEMBERS")) return message.reply("HIBA! **Nincs jogod ehhez a parancshoz! Szükséges jog:** `Tagok bannolása!`")
+        let ban_user = message.mentions.members.first();
+        if(args[0] && ban_user){
+
+            if(args[1]){
+
+                let BanEmbed = new Discord.MessageEmbed()
+                .setTitle("BAN")
+                .setColor("RED")
+                .setDescription(`**Bannolva:** ${message.author.tag}\n**Bannolva lett:** ${kick_user.user.tag}\n**BAN indoka:** ${args.slice(1).join(" ")}`)
+
+            message.channel.send(BanEmbed);
+
+                ban_user.ban(args.slice(1).join(" "));
+
+            } else {
+            let parancsEmbed = new Discord.MessageEmbed()
+            .setTitle("Parancs használata:")
+            .addField(`\`${prefix}ban <@név> [indok]\``, "RedstoneBot")
+            .setColor("GREEN")
+            .setDescription("HIBA: Kérlek adj meg egy indokot!!")
+
+            message.channel.send(parancsEmbed);
+            }
+
+        } else {
+            let parancsEmbed = new Discord.MessageEmbed()
+            .setTitle("Parancs használata:")
+            .addField(`\`${prefix}ban <@név> [indok]\``, "RedstoneBot")
+            .setColor("GREEN")
+            .setDescription("HIBA: Kérlek említs meg egy embert!")
+
+            message.channel.send(parancsEmbed);
+
+        }
+    }
+
+if(cmd === `${prefix}kick`){
         if (!message.member.hasPermission("KICK_MEMBERS")) return message.reply("HIBA! **Nincs jogod ehhez a parancshoz! Szükséges jog:** `Tagok kirúgása!`")
         let kick_user = message.mentions.members.first();
         if(args[0] && kick_user){
