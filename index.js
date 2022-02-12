@@ -291,18 +291,18 @@ if(cmd === `${prefix}avatar`){
         const avatarembed = new Discord.MessageEmbed()
  
         if(!message.mentions.users.first()){
-            embed.setTitle("Te avatárod:")
-            embed.setThumbnail(message.author.displayAvatarURL())
-            embed.setDescription("Ez a te avatárod!")
-            embed.setColor("RANDOM")
+            .setTitle("Te avatárod:")
+            .setThumbnail(message.author.displayAvatarURL())
+            .setDescription("Ez a te avatárod!")
+            .setColor("RANDOM")
             return message.channel.send(avatarembed)
         }else{
             const user = message.mentions.users.first()
-            embed.setTitle(`${user.tag}'s Avatárja:`)
-            embed.setThumbnail(user.displayAvatarURL())
-            embed.setDescription(`Ez a ${user.tag}'s avatárja.`)
-            embed.setColor('RANDOM')
-            embed.setFooter("Avatar command")
+            .setTitle(`${user.tag}'s Avatárja:`)
+            .setThumbnail(user.displayAvatarURL())
+            .setDescription(`Ez a ${user.tag}'s avatárja.`)
+            .setColor('RANDOM')
+            .setFooter("Avatar command")
             return message.channel.send(avatarembed)
         }
     } 
