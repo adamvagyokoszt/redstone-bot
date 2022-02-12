@@ -433,7 +433,26 @@ if(cmd === `${prefix}macska`){
         });
       }
 
-      
+         
+    if(cmd === `${prefix}ötlet`){
+        let szöveg = args.join(" ");
+        let channelID = "871043112653439036"
+
+        if(szöveg) {
+            let Embed = new Discord.MessageEmbed()
+        .setColor("GREEN")
+
+        .setAuthor(message.author.username + `|Ötletett köldött🧱`)
+
+        .addField("Szöveg:", szöveg)
+
+        .setFooter(`${botname}`)
+         const channel = member.guild.channels.cache.get(channelID);
+         channel.send(Embed)
+        } else {
+            message.reply("írj ötletet !")
+        }
+    } 
 
     if(cmd === `${prefix}embedsay`){
         if(!message.member.hasPermission("KICK_MEMBERS" || "BAN_MEMBERS")) return message.channel.send("Ehhez a parancshoz nincs jogod!")
