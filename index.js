@@ -251,6 +251,24 @@ if(cmd === `${prefix}shop`){
 
     }
 
+if(cmd === `${prefix}vasarol-vip+`){
+        let viprang_id = "824216009744973824"
+
+        let price = "120000";
+        if(message.member.roles.cache.has(viprang_id)) return message.reply("*Ezt a rangot már megvetted!*");
+        if(selfMoney < price) return message.reply(`Erre a rangra nincs pénzed! Egyenleged: ${selfMoney}FT.`)
+
+        money[message.author.id] = {
+            money: selfMoney - parseInt(price),
+            user_id: message.author.id
+        }
+
+        message.guild.member(message.author.id).roles.add(viprang_id);
+
+        message.reply("**Sikeres vásárlás! A rangot odaadtam a pénzt levontam**")
+
+    }
+
 if(cmd === `${prefix}napiüzi`){
     let cd_role_id = "941768580670816317";
     let cooldown_time = "1440";
