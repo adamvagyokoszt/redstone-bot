@@ -434,25 +434,63 @@ if(cmd === `${prefix}macska`){
       }
 
          
-    if(cmd === `${prefix}ötlet`){
-        let szöveg = args.join(" ");
-        let channelID = "871043112653439036"
+    if(cmd === `${prefix}report`){
+    if(args[0] && message.mentions.members.first() && args[1]){
 
-        if(szöveg) {
-            let Embed = new Discord.MessageEmbed()
-        .setColor("GREEN")
+        message.channel.send("A reportodat sikeresen elküldtük!")
 
-        .setAuthor(message.author.username + `|Ötletett köldött🧱`)
+        let report_channel = "830713526339371029";
 
-        .addField("Szöveg:", szöveg)
+        let report_embed = new Discord.MessageEmbed()
+            .setAuthor(message.mentions.members.first().user.tag + `| REPORTED`)
+            .setDescription("Report indoka:" + args.join(" ").slice(args[0].length))
+            .addField("Reportolta:", message.author.tag)
+            .setColor("RANDOM")
+            .setTimestamp(message.createdAt)
+            .setFooter(bot.user.username)
 
-        .setFooter(`${botname}`)
-         const channel = member.guild.channels.cache.get(channelID);
-         channel.send(Embed)
-        } else {
-            message.reply("írj ötletet !")
-        }
-    } 
+            bot.channels.cache.get(report_channel).send(report_embed);
+
+    } else {
+        let he_embed = new Discord.MessageEmbed()
+            .setAuthor(message.author.tag + `| Használat`)
+            .setDescription(`${prefix}report @<név> <indok>`)
+            .setColor("RANDOM")
+            .setTimestamp(message.createdAt)
+            .setFooter(bot.user.username)
+
+            message.channel.send(he_embed);
+    }
+}
+
+if(cmd === `${prefix}ötlet`){
+    if(args[0] && message.mentions.members.first() && args[1]){
+
+        message.channel.send("A ötletedet sikeresen elküldtük!")
+
+        let report_channel = "871043112653439036";
+
+        let report_embed = new Discord.MessageEmbed()
+            .setAuthor(message.mentions.members.first().user.tag + `| Ötlete`)
+            .setDescription("Ötlet:" + args.join(" ").slice(args[0].length))
+            .addField("Ötlet adó:", message.author.tag)
+            .setColor("RANDOM")
+            .setTimestamp(message.createdAt)
+            .setFooter(bot.user.username)
+
+            bot.channels.cache.get(report_channel).send(report_embed);
+
+    } else {
+        let he_embed = new Discord.MessageEmbed()
+            .setAuthor(message.author.tag + `| Használat`)
+            .setDescription(`${prefix}report @<név> <indok>`)
+            .setColor("RANDOM")
+            .setTimestamp(message.createdAt)
+            .setFooter(bot.user.username)
+
+            message.channel.send(he_embed);
+    }
+}
 
     if(cmd === `${prefix}embedsay`){
         if(!message.member.hasPermission("KICK_MEMBERS" || "BAN_MEMBERS")) return message.channel.send("Ehhez a parancshoz nincs jogod!")
