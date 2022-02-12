@@ -464,7 +464,7 @@ if(cmd === `${prefix}macska`){
 }
 
 if(cmd === `${prefix}ötlet`){
-    if(args[0] && message.mentions.members.first() && args[1]){
+    if(args[1]){
 
         message.channel.send("A ötletedet sikeresen elküldtük!")
 
