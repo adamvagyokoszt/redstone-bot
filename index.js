@@ -349,68 +349,7 @@ if(cmd === `${prefix}szavazas`){
 /////Csúnyaszó rendszer/////
 const  badwords  = require("./badwords.json")
 
-    if(!badwords["szamlalo"]) {
-        badwords["szamlalo"] = {
-            szam: 0
 
-        };
-    }
-    fs.writeFile("./badwords.json", JSON.stringify(badwords), (err) => {
-        if(err) console.log(err);
-    });
-
-    if(cmd === `${prefix}a`){
-        
-        if(args[0]) {
-            fs.writeFile("./badwords.json", JSON.stringify(badwords), (err) => {
-                if(err) console.log(err);
-            });
-    
-            if(!badwords["szamlalo"]) {
-                badwords["szamlalo"] = {
-                    szam: 0
-        
-                };
-            }
-    
-            badwords["szamlalo"] = {
-            szam: badwords["szamlalo"].szam + 1
-            }
-            fs.writeFile("./badwords.json", JSON.stringify(badwords), (err) => {
-                if(err) console.log(err);
-            });
-
-
-            badwords[badwords["szamlalo"].szam] = {
-                szo: args[0]
-            }
-   
-            fs.writeFile("./badwords.json", JSON.stringify(badwords), (err) => {
-                if(err) console.log(err);
-            });
- 
-            message.channel.send("Mentve!\nHozzá lett adva a listához!: "+(args[0]))
-        } else {
-            message.reply("írj szöveget!")
-        }
-    }
-
-
-    
-        if(message.member.hasPermission("ADMINISTRATOR")){
-          let confirm = false;
-          
-          let i;
-          for(i = 0; i < badwords.length; i++){
-              if(message.content.toLowerCase().includes(badwords[i].toLowerCase())){
-              confirm = true
-              }
-          }
-          if(confirm) {
-              message.delete()
-              return message.channel.send("Ezen a szerveren a csúnyaszavak használata NEM engedélyezett!")
-          }
-        }
 
 
 
