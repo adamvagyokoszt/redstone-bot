@@ -541,43 +541,45 @@ if(cmd === `${prefix}macska`){
 
     
 
-    if(cmd === `${prefix}ban`){
-        if (!message.member.hasPermission("BAN_MEMBERS")) return message.reply("HIBA! **Nincs jogod ehhez a parancshoz! Szükséges jog:** `Tagok bannolása!`")
-        let ban_user = message.mentions.members.first();
-        if(args[0] && ban_user){
 
-            if(args[1]){
+if(cmd === `${prefix}ban`){
+    if(!message.member.hasPermission("BAN_MEMBERS")) return message.reply("Ehhez nincs jogod!")
+    let ban_user = message.mentions.members.first();
+    if(args[0] && ban_user){
 
-                let BanEmbed = new Discord.MessageEmbed()
-                .setTitle("BAN")
-                .setColor("RED")
-                .setDescription(`**Bannolva:** ${message.author.tag}\n**Bannolva lett:** ${ban_user.user.tag}\n**BAN indoka:** ${args.slice(1).join(" ")}`)
+        if(args[1]){
 
-            message.channel.send(BanEmbed);
+            let BanEmbed = new Discord.MessageEmbed()
+            .setTitle("BAN")
+            .setColor("RED")
+            .setDescription(`**Banolta:** ${message.author.tag}\n**Banolva lett:** ${ban_user.user.tag}\n**Ban indoka:** ${args.slice(1).join(" ")}`)
 
-                ban_user.ban(args.slice(1).join(" "));
+        message.channel.send(BanEmbed);
 
-            } else {
-            let parancsEmbed = new Discord.MessageEmbed()
-            .setTitle("Parancs használata:")
-            .addField(`\`${prefix}ban <@név> [indok]\``, "RedstoneBot")
-            .setColor("GREEN")
-            .setDescription("HIBA: Kérlek adj meg egy indokot!!")
-
-            message.channel.send(parancsEmbed);
-            }
+            ban_user.ban(args.slice(1).join(" "));
 
         } else {
-            let parancsEmbed = new Discord.MessageEmbed()
-            .setTitle("Parancs használata:")
-            .addField(`\`${prefix}ban <@név> [indok]\``, "RedstoneBot")
-            .setColor("GREEN")
-            .setDescription("HIBA: Kérlek említs meg egy embert!")
+        let parancsEmbed = new Discord.MessageEmbed()
+        .setTitle("Parancs használata:")
+        .addField(`\`${prefix}ban <@név> [indok]\``, "˘˘˘")
+        .setColor("BLUE")
+        .setDescription("HIBA: Kérlek adj meg egy indokot!!")
 
-            message.channel.send(parancsEmbed);
-
+        message.channel.send(parancsEmbed);
         }
+
+    } else {
+        let parancsEmbed = new Discord.MessageEmbed()
+        .setTitle("Parancs használata:")
+        .addField(`\`${prefix}ban <@név> [indok]\``, "˘˘˘")
+        .setColor("BLUE")
+        .setDescription("HIBA: Kérlek említs meg egy embert!")
+
+        message.channel.send(parancsEmbed);
+
     }
+}
+
 
 if(cmd === `${prefix}kick`){
         if (!message.member.hasPermission("KICK_MEMBERS")) return message.reply("HIBA! **Nincs jogod ehhez a parancshoz! Szükséges jog:** `Tagok kirúgása!`")
