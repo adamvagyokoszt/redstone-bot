@@ -85,6 +85,51 @@ bot.on("message", async message => {
         }
     }
 
+
+    if(cmd === `${prefix}slot`){
+        let min_money = 50;
+        if(selfMoney < min_money) return message.reply(`Túl kevés pénzed van! (Minimum ${min_money}FT-nak kell lennie a számládon!) Egyenleged: ${selfMoney}.`)
+
+        let tét = Math.round(args[0] *100)/100
+        if(isNaN(tét)) return message.reply("Kérlek adj meg egy összeget! (Pl: 5)")
+        if(tét > selfMoney) return message.reply("az egyenlegeednél több pénzt nem rakhatsz fel a slotra!")
+
+        let slots = ["🍌", "🍎", "🍍", "🥒", "🍇"]
+        let result1 = Math.floor(Math.random() * slots.length)
+        let result2 = Math.floor(Math.random() * slots.length)
+        let result3 = Math.floor(Math.random() * slots.length)
+
+        if(slots[result1] === slots[result2] && slots[result3]){
+            let wEmbed = new Discord.MessageEmbed()
+            .setTitle('🎉 Szerencse játék | slot machine 🎉')
+            .addField(message.author.username, `Nyertél! Ennyit kaptál: ${tét*1.6}ft.`)
+            .addField("Eredmény:", slots[result1] + slots[result2] + slots[result3])
+            .setColor("RANDOM")
+            .setTimestamp(message.createdAt)
+            .setFooter(botname)
+            message.channel.send(wEmbed)
+            
+            money[message.author.id] = {
+                money: selfMoney + tét*1.6,
+                user_id: message.author.id
+            }
+        } else {
+            let wEmbed = new Discord.MessageEmbed()
+            .setTitle('🎉 Szerencse játék | slot machine 🎉')
+            .addField(message.author.username, `Vesztettél! Ennyit buktál: ${tét}ft.`)
+            .addField("Eredmény:", slots[result1] + slots[result2] + slots[result3])
+            .setColor("RANDOM")
+            .setTimestamp(message.createdAt)
+            .setFooter(botname)
+            message.channel.send(wEmbed)
+            
+            money[message.author.id] = {
+                money: selfMoney - tét,
+                user_id: message.author.id
+            }
+        }
+    }
+
     if(cmd === `${prefix}pay`){
         let pay_money = Math.round(args[0]*100)/100
         if(isNaN(pay_money)) return message.reply(`A parancs helyes használata: ${prefix}pay <összeg> <@név>`)
