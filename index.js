@@ -81,7 +81,7 @@ bot.on("message", async message => {
     if(cmd === `${prefix}ftadd`){
         if(!message.member.hasPermission("KICK_MEMBERS" || "BAN_MEMBERS")) return message.channel.send("Ehhez a parancshoz nincs jogod!")
   
-        let money = (" ")
+        let money = Math.floor(" ")
         let add_user = message.mentions.members.first();
        
         message.channel.send(`${money}Ft-t küldtem ${add_user}-nek`)
