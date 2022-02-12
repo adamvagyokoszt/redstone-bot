@@ -224,7 +224,8 @@ if(cmd === `${prefix}lb`){
 if(cmd === `${prefix}shop`){
         let ShopEmbed = new Discord.MessageEmbed()
             .setAuthor(message.author.username)
-            .setDescription(`${prefix}vasarol-vip (ÁR: 50000FT)`)
+            .setDescription(`${prefix}vasarol-vip (ÁR: 50000FT), ${prefix}vasarol-vip+ (ÁR: 120000FT)
+`)
             .setColor("RANDOM")
             .setThumbnail(bot.user.displayAvatarURL())
 
