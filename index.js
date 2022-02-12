@@ -25,7 +25,7 @@ bot.on("ready", async() => {
         bot.user.setActivity(status, {type: "WATCHING"})
     }, 5000)
 })
-
+/////) Üdvözlő rendszer/////////
 bot.on("guildMemberAdd", (member) => {
     const rulesChanel = member.guild.rulesChannelID;
     const channelID = "730430575046819914"
@@ -43,7 +43,7 @@ bot.on("guildMemberRemove", (member) => {
     const channel = member.guild.channels.cache.get(channelID);
     channel.send(message)
 }) 
-
+/////Economy//////
 bot.on("message", async message => {
     let MessageArray = message.content.split(" ");
     let cmd = MessageArray[0];
@@ -121,6 +121,22 @@ setTimeout(() => {
     message.member.roles.remove(cd_role_id)
     }, 1000* cooldown_time)
 }
+
+if(cmd === `${prefix}lb`){
+        let toplist = Object.entries(money)
+        .map(v => `${v[1].money}FT <@${v[1].user_id}>`)
+        .sort((a, b) => b.split("FT")[0] - a.split("FT")[0])
+        .slice(0, 10)
+
+        let LbEmbed = new Discord.MessageEmbed()
+        .setTitle("Leaderboard")
+        .setColor("RANDOM")
+        .addField("Pénz top lista | TOP10", toplist, true)
+        .setTimestamp(message.createdAt)
+        .setFooter(botname)
+
+        message.channel.send(LbEmbed)
+    }
 
 
 if(cmd === `${prefix}napiüzi`){
