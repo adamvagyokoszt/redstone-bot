@@ -80,10 +80,13 @@ bot.on("message", async message => {
 
     if(cmd === `${prefix}ftadd`){
         if(!message.member.hasPermission("KICK_MEMBERS" || "BAN_MEMBERS")) return message.channel.send("Ehhez a parancshoz nincs jogod!")
- 
-        message.channel.send("1FT ot kaptál!")
-        money[message.author.id] = {
-            money: selfMoney + 100000
+  
+        let money = (" ")
+        let add_user = message.mentions.members.first();
+       
+        message.channel.send(`${money}Ft-t küldtem ${add_user}-nek`)
+        money[`${add_user}`] = {
+            money: selfMoney + money
         }
     }
 
