@@ -346,10 +346,6 @@ if(cmd === `${prefix}szavazas`){
     }
 } 
 
-/////Csúnyaszó rendszer/////
-const  badwords  = require("./badwords.json")
-
-
 
 
 
