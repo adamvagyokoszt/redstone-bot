@@ -248,8 +248,7 @@ if(cmd === `${prefix}lb`){
 if(cmd === `${prefix}shop`){
         let ShopEmbed = new Discord.MessageEmbed()
             .setAuthor(message.author.username)
-            .setDescription(`${prefix}vasarol-vip (ÁR: 50000FT), ${prefix}vasarol-vip+ (ÁR: 120000FT)
-`)
+            .setDescription(`${prefix}vasarol-vip (ÁR: 50000FT)|| ${prefix}vasarol-vip+ (ÁR: 120000FT)||${prefix}vasarol-gamer (ÁR: 12000FT)`)
             .setColor("RANDOM")
             .setThumbnail(bot.user.displayAvatarURL())
 
@@ -260,6 +259,23 @@ if(cmd === `${prefix}shop`){
 
     if(cmd === `${prefix}vasarol-vip`){
         let viprang_id = "824215428984340490"
+
+        let price = "50000";
+        if(message.member.roles.cache.has(viprang_id)) return message.reply("*Ezt a rangot már megvetted!*");
+        if(selfMoney < price) return message.reply(`Erre a rangra nincs pénzed! Egyenleged: ${selfMoney}FT.`)
+
+        money[message.author.id] = {
+            money: selfMoney - parseInt(price),
+            user_id: message.author.id
+        }
+
+        message.guild.member(message.author.id).roles.add(viprang_id);
+
+        message.reply("**Sikeres vásárlás! A rangot odaadtam a pénzt levontam**")
+
+    }
+if(cmd === `${prefix}vasarol-gamer`){
+        let viprang_id = "824223658196598804"
 
         let price = "50000";
         if(message.member.roles.cache.has(viprang_id)) return message.reply("*Ezt a rangot már megvetted!*");
