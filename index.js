@@ -551,7 +551,7 @@ if(cmd === `${prefix}macska`){
                 let BanEmbed = new Discord.MessageEmbed()
                 .setTitle("BAN")
                 .setColor("RED")
-                .setDescription(`**Bannolva:** ${message.author.tag}\n**Bannolva lett:** ${kick_user.user.tag}\n**BAN indoka:** ${args.slice(1).join(" ")}`)
+                .setDescription(`**Bannolva:** ${message.author.tag}\n**Bannolva lett:** ${ban_user.user.tag}\n**BAN indoka:** ${args.slice(1).join(" ")}`)
 
             message.channel.send(BanEmbed);
 
