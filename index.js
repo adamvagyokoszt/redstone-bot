@@ -308,7 +308,7 @@ if(cmd === `${prefix}macska`){
         message. channel. send("Pinging..."). then(m =>{
         var ping = m. createdTimestamp - message. createdTimestamp;
         var botPing = Math. round(bot. pi);
-        m.edit(`:emoji_14: Redstone bot pingje:\n ${ping}ms`);
+        m.edit(` Redstone bot pingje:\n ${ping}ms`);
         });
       }
 
