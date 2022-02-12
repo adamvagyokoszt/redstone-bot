@@ -595,14 +595,7 @@ if(cmd === `${prefix}kick`){
         }
     }
 
-
-module.exports = {
-    name : 'mute',
-    description: "Lenémítja a megjelölt személyt!",
-    /**
-     * @param {Message} message
-     */
-    run : async(client, message, args) => {
+        if(cmd === `${prefix}mute`){
         if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.channel.send('Nincs jogod ezt a parancsot használni!')
         const Member = message.mentions.members.first() || message.guild.members.cache.get(args[0])
         if(!Member) return message.channel.send('Akit megjelölzél nem található!')
