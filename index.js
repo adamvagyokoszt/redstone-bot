@@ -223,6 +223,11 @@ if(cmd === `${prefix}work`){
         user_id: message.author.id
 }
 
+setTimeout(() => {
+    message.member.roles.remove(cd_role_id)
+    }, 1000* cooldown_time)
+}
+
 if(cmd === `${prefix}lb`){
         let toplist = Object.entries(money)
         .map(v => `${v[1].money}FT <@${v[1].user_id}>`)
@@ -343,7 +348,27 @@ if(cmd === `${prefix}szavazas`){
 
 
 
+if(cmd === `${prefix}macska`){
+     let msg = await message.channel.send("Macska betöltése🐈...")
+     
+     let {body} = await superagent
+     .get ('https://aws.random.cat/meow')
+ 
+     if(!{body}) return message.channel.send("Hiba történt⚠️! Próbáld meg újra.")
 
+
+     let catEmbed = new Discord.MessageEmbed()
+     .setColor("RANDOM")
+
+     .addField("Úgye milyen cuki😛")
+     .setImage(body.file)
+
+     .setTimestamp(message.createdAt)
+
+     .setFooter(botname)
+
+     message.channel.send(catEmbed)
+}
     if(cmd === `${prefix}meme`){
         if(message.channel.type === 'dm') return message.reply("Itt nem tudod használni!");
         const subreddits = ["dankmeme", "meme", "me_irl"]
