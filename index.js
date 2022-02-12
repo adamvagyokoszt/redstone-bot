@@ -80,23 +80,37 @@ bot.on("message", async message => {
 
     if(cmd === `${prefix}ftadd`){
         if(!message.member.hasPermission("KICK_MEMBERS" || "BAN_MEMBERS")) return message.channel.send("Ehhez a parancshoz nincs jogod!")
-  
-        let money = Math.floor(" ");
-        let add_user = message.mentions.members.first();
-       
-        let(!money){
-             return message.reply("Kérlek adj meg egy összeget!")
-        }
+        let pay_money = Math.round(args[0]*100)/100
+        if(isNaN(pay_money)) return message.reply(`A parancs helyes használata: ${prefix}pay <összeg> <@név>`)
+        
+        let pay_user = message.mentions.members.first();
 
-        let(!add_user){
-            return message.reply("Kérlek pingelj meg egy embert!")
-        }
-        message.channel.send(`${money}Ft-t küldtem ${add_user}-nek`)
-        money[`${add_user}`] = {
-            money: selfMoney + money
-        }
+        if(args[1] && pay_user){
+            if(!money[pay_user.id]) {
+                money[pay_user.id] = {
+                    money: 100,
+                    user_id: pay_user.id
+                }
+            }
+
+            money[pay_user.id] = {
+                money: money[pay_user.id].money + pay_money,
+                user_id: pay_user.id
+            }
+
+         
+
+        message.channel.send(`Sikeresen átutaltál <@${pay_user.id}> számlájára ${pay_money}FT-ot!`)
+
+        fs.writeFile("./money.json", JSON.stringify(money), (err) => {
+            if(err) console.log(err);
+        });
+    } else {
+        message.reply(`A parancs helyes használata: ${prefix}ftadd <összeg> <@név>`)
     }
+}
 
+        
 
     if(cmd === `${prefix}slot`){
         let min_money = 50;
