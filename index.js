@@ -354,7 +354,7 @@ if(cmd === `${prefix}macska`){
 
      let catEmbed = new Discord.MessageEmbed()
      .setColor("RANDOM");
-     .addField("Úgye milyen cuki😛");
+     .setDescription("Úgye milyen cuki😛");
      .setImage(body.file);
      .setTimestamp(message.createdAt);
      .setFooter(botname);
