@@ -353,15 +353,11 @@ if(cmd === `${prefix}macska`){
 
 
      let catEmbed = new Discord.MessageEmbed()
-     .setColor("RANDOM")
-
-     .addField("Úgye milyen cuki😛")
-     .setImage(body.file)
-
-     .setTimestamp(message.createdAt)
-
-     .setFooter(botname)
-
+     .setColor("RANDOM");
+     .addField("Úgye milyen cuki😛");
+     .setImage(body.file);
+     .setTimestamp(message.createdAt);
+     .setFooter(botname);
      message.channel.send(catEmbed)
 }
     if(cmd === `${prefix}meme`){
