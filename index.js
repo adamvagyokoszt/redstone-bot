@@ -84,12 +84,13 @@ bot.on("message", async message => {
         let money = Math.floor(" ");
         let add_user = message.mentions.members.first();
        
-        let(!money)
+        let(!money){
              return message.reply("Kérlek adj meg egy összeget!")
+        }
 
-        let(!add_user)
+        let(!add_user){
             return message.reply("Kérlek pingelj meg egy embert!")
-
+        }
         message.channel.send(`${money}Ft-t küldtem ${add_user}-nek`)
         money[`${add_user}`] = {
             money: selfMoney + money
