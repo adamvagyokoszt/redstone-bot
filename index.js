@@ -1,7 +1,6 @@
-const { Intents } = require("discord.js")
+const { Client, Intents, MessageEmbed } = require('discord.js');
+const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 const botconfig = require("./botconfig.json");
-const allIntents = new Intents(32767);
-const client = new client({ allIntents });
 const money = require("./money.json")
 var weather = require('weather-js');
 const ms = require("ms");
@@ -704,4 +703,4 @@ if(cmd === `${prefix}kick`){
         
 
 })
-bot.login(process.env.TOKEN)
+client.login(process.env.TOKEN)
