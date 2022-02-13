@@ -6,13 +6,13 @@ var weather = require('weather-js');
 const ms = require("ms");
 const superagent = require('superagent');
 const randomPuppy = require('random-puppy');
-let botname = "Redstone Bot"
+let clientname = "Redstone Bot"
 
 client.on("ready", async() => {
-    console.log(`${bot.user.username} sikeresn elindult!`)
+    console.log(`${client.user.username} sikeresn elindult!`)
 
     let státuszok = [
-        `${bot.guilds.cache.size}  szerver`,
+        `${client.guilds.cache.size}  szerver`,
         "Prefix: ?",
         "?help",
         "Fejlesztő: Ádám"
