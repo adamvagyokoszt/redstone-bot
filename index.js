@@ -21,7 +21,7 @@ client.on("ready", async() => {
     setInterval(function() {
         let status = státuszok[Math.floor(Math.random()* státuszok.length)]
 
-        bot.user.setActivity(status, {type: "WATCHING"})
+        client.user.setActivity(status, {type: "WATCHING"})
     }, 5000)
 })
 /////) Üdvözlő rendszer/////////
