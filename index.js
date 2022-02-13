@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const botconfig = require("./botconfig.json");
-const bot = new Discord.Client({intents:[discord.Intents.FLAGS.GUILDS,discord.Intents.FLAGS.GUILD_MESSAGES]});
+const client = new Discord.Client({intents:[discord.Intents.FLAGS.GUILDS,discord.Intents.FLAGS.GUILD_MESSAGES]});
 const fs = require("fs");
 const money = require("./money.json")
 var weather = require('weather-js');
@@ -9,7 +9,7 @@ const superagent = require('superagent');
 const randomPuppy = require('random-puppy');
 let botname = "Redstone Bot"
 
-bot.on("ready", async() => {
+client.on("ready", async() => {
     console.log(`${bot.user.username} sikeresn elindult!`)
 
     let státuszok = [
@@ -26,7 +26,7 @@ bot.on("ready", async() => {
     }, 5000)
 })
 /////) Üdvözlő rendszer/////////
-bot.on("guildMemberAdd", (member) => {
+client.on("guildMemberAdd", (member) => {
     const rulesChanel = member.guild.rulesChannelID;
     const channelID = "730430575046819914"
 
@@ -44,7 +44,7 @@ bot.on("guildMemberRemove", (member) => {
     channel.send(message)
 }) 
 /////Economy//////
-bot.on("message", async message => {
+client.on("message", async message => {
     let MessageArray = message.content.split(" ");
     let cmd = MessageArray[0];
     let args = MessageArray.slice(1);
