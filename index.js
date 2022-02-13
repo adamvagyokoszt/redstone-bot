@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const botconfig = require("./botconfig.json");
-const bot = new Discord.Client({disableEveryone: true});
+const bot = new Discord.Client({intents:[discord.Intents.FLAGS.GUILDS,discord.Intents.FLAGS.GUILD_MESSAGES]});
 const fs = require("fs");
 const money = require("./money.json")
 var weather = require('weather-js');
