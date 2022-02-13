@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+const { Intents } = require(discord.js)
 const botconfig = require("./botconfig.json");
 const allIntents = new Intents(32767);
 const client = new Client({ allIntents });
