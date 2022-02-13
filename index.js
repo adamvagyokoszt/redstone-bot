@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const botconfig = require("./botconfig.json");
-const client = new Discord.Client({intents:[discord.Intents.FLAGS.GUILDS,discord.Intents.FLAGS.GUILD_MESSAGES]});
-const fs = require("fs");
+const allIntents = new Intents(32767);
+const client = new Client({ allIntents });
 const money = require("./money.json")
 var weather = require('weather-js');
 const ms = require("ms");
