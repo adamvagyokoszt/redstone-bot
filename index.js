@@ -1,5 +1,5 @@
 const { Client, Intents, MessageEmbed } = require('discord.js');
-const client = new Client({ intents: [Intents.FLAGS.GUILDS,Intents.DIRECT_MESSAGE_TYPING,Intents.GUILD_MEMBERS,Intents.GUILD_PRESENCES,] });
+const client = new Client({ intents: [Intents.FLAGS.GUILDS,Intents.DIRECT_MESSAGE_TYPING,Intents.GUILD_MEMBERS,Intents.GUILD_PRESENCES] });
 const botconfig = require("./botconfig.json")
 const money = require("./money.json")
 var weather = require('weather-js');
