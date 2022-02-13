@@ -34,7 +34,7 @@ client.on("guildMemberAdd", (member) => {
     const channel = member.guild.channels.cache.get(channelID);
     channel.send(message)
 })
-bot.on("guildMemberRemove", (member) => {
+client.on("guildMemberRemove", (member) => {
     const channelID = "730430575046819914"
 
 
