@@ -163,7 +163,7 @@ client.on("message", async message => {
             .addField("Eredmény:", slots[result1] + slots[result2] + slots[result3])
             .setColor("RANDOM")
             .setTimestamp(message.createdAt)
-            .setFooter(botname)
+            .setFooter(clientname)
             message.channel.send({ embeds: [wEmbed] })
            
  money[message.author.id] = {
@@ -177,7 +177,7 @@ client.on("message", async message => {
             .addField("Eredmény:", slots[result1] + slots[result2] + slots[result3])
             .setColor("RANDOM")
             .setTimestamp(message.createdAt)
-            .setFooter(botname)
+            .setFooter(clientname)
             message.channel.send({ embeds: [wEmbed] })
            
             money[message.author.id] = {
