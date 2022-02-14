@@ -112,7 +112,7 @@ client.on("message", async message => {
 }
 
     if(cmd === `${prefix}ftvon`){
-        if(!message.member.hasPermission("KICK_MEMBERS" || "BAN_MEMBERS")) return message.channel.send("Ehhez a parancshoz nincs jogod!")
+        if (!message.member.permissions.has('ADMINISTRATOR')) return message.channel.send(`> __Nincs megfelelő engedélyed a parancs használatához!__`);
         let pay_money = Math.round(args[0]*100)/100
         if(isNaN(pay_money)) return message.reply(`A parancs helyes használata: ${prefix}ftadd <összeg> <@név>`)
         
@@ -357,16 +357,15 @@ if(cmd === `${prefix}napiüzi`){
     .setFooter(clientname)
 
     message.channel.send({ embeds: [workEmbed] })
-           
-
-
-    
+     
+  
 setTimeout(() => {
     message.member.roles.remove(cd_role_id)
     }, 1000* cooldown_time)
 }
+
 if(cmd === `${prefix}szavazas`){
-    if(!message.member.hasPermission("KICK_MEMBERS" || "BAN_MEMBERS")) return message.channel.send("Ehhez a parancshoz nincs jogod!")
+    if (!message.member.permissions.has('BAN_MEMBERS')) return message.channel.send(`> __Nincs megfelelő engedélyed a parancs használatához!__`);
     if(message.channel.type === 'dm') return message.reply("Itt nem tudod használni!");
     if(args[0]){
         let szavazasembed = new MessageEmbed()
@@ -403,8 +402,8 @@ if(cmd === `${prefix}macska`){
      .addField("Úgye milyen cuki😛")
      .setImage(body.file)
      .setTimestamp(message.createdAt)
-     .setFooter(botname)
-     message.channel.send({ embeds: [catEmbed] })
+     .setFooter(clientname)
+     message.channel.send({ embeds: [catEmbed] , file: [body.file] })
            
 }
     if(cmd === `${prefix}meme`){
