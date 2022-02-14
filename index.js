@@ -333,46 +333,7 @@ if(cmd === `${prefix}vasarol-vip+`){
            
 
 
-    
-
-
-
-
-
-if(cmd === `${prefix}macska`){
-     let msg = await message.channel.send("Macska betöltése🐈...")
-     
-     let {body} = await superagent
-     .get ('https://aws.random.cat/meow')
- 
-     if(!{body}) return message.channel.send("Hiba történt⚠️! Próbáld meg újra.")
-
-
-     let catEmbed = new MessageEmbed()
-     .setColor("RANDOM")
-
-     .addField("Úgye milyen cuki😛")
-     .setImage(body.file)
-     .setTimestamp(message.createdAt)
-     .setFooter(clientname)
-     message.channel.send({ embeds: [catEmbed] })
-           
-}
-    if(cmd === `${prefix}meme`){
-        if(message.channel.type === 'dm') return message.reply("Itt nem tudod használni!");
-        const subreddits = ["dankmeme", "meme", "me_irl"]
-        const random = subreddits[Math.floor(Math.random() * subreddits.length)]
-
-        const IMG = await randomPuppy(random)
-        const MemeEmbed = new Discord.MessageEmbed()
-        .setColor("RANDOM")
-        .setImage(IMG)
-        .setTitle(`Keresési szöveg: ${random} (KATT IDE!)`)
-        .setURL(`https://www.reddit.com/r/${random}`)
-
-        message.channel.send(MemeEmbed)
-    } 
-
+   
 
 
  if(cmd === `${prefix}help`){
