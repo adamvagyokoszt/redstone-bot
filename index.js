@@ -532,7 +532,7 @@ message.channel.send({ embeds: [embed] })
           .setColor("RANDOM")
           .setDescription(`**${user.user.tag}\n**Bannolva | Bannolta: ** ${message.author.tag}\n** | Ban indoka: **${args.slice(2).join(' ')}\n** | Ban időtartama: **${args[1]}**`)
           .setFooter(`Redstone Bot Bannolás`)
-            message.reply("**Sikeresen kitiltottad a következő felhasználót:** (" + user.user.tag + ")")
+            message.channel.send({ embeds: [BanEmbed]})
         } else {
             message.reply("HIBA! **Nincs jogom bannolni ezt az embert.**");
         }
