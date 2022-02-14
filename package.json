@@ -16,7 +16,6 @@
     "weather-js": "^2.0.0",
     "weather.js": "^0.1.0",
     "superagent": "^7.1.1",
-    "random-puppy": "^1.1.0",
-    "discord-buttons": "^4.0.0-deprecated"
+    "random-puppy": "^1.1.0"
   }
 }
