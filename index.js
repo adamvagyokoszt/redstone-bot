@@ -255,10 +255,7 @@ if(cmd === `${prefix}work`){
         user_id: message.author.id
 }
 
-setTimeout(() => {
-    message.member.roles.remove(cd_role_id)
-    }, 1000* cooldown_time)
-}
+
 
            
 
