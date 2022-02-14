@@ -334,10 +334,6 @@ if(cmd === `${prefix}vasarol-vip+`){
 
 
     
-setTimeout(() => {
-    message.member.roles.remove(cd_role_id)
-    }, 1000* cooldown_time)
-}
 
 
 
@@ -358,7 +354,7 @@ if(cmd === `${prefix}macska`){
      .addField("Úgye milyen cuki😛")
      .setImage(body.file)
      .setTimestamp(message.createdAt)
-     .setFooter(botname)
+     .setFooter(clientname)
      message.channel.send({ embeds: [catEmbed] })
            
 }
