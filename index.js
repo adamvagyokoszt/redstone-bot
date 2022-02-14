@@ -30,10 +30,10 @@ client.on("guildMemberAdd", (member) => {
     const rulesChanel = member.guild.rulesChannelID;
     const channelID = "730430575046819914"
 
-    const message = `Szia <@${member.id}>! Üdv itt a Rolix Fan klub szerveren. Szabályzat:${member.guild.channels.cache.get(rulesChanel).toString()}`
+    const messages = `Szia <@${member.id}>! Üdv itt a Rolix Fan klub szerveren. Szabályzat:${member.guild.channels.cache.get(rulesChanel).toString()}`
 
-    const channel = member.guild.channels.cache.get(channelID);
-    channel.send(message)
+    const channele = member.guild.channels.cache.get(channelID);
+    channele.send(messages)
 })
 client.on("guildMemberRemove", (member) => {
     const channelID = "730430575046819914"
