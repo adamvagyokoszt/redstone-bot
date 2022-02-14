@@ -331,15 +331,6 @@ if(cmd === `${prefix}vasarol-vip+`){
         message.reply("**Sikeres vásárlás! A rangot odaadtam a pénzt levontam**")
     }
 
-if(message.content.includes("https://" || "http://"
-)) {
-if (message.member.permissions.has('BAN_MEMBERS'))
-message.delete();
-const embed = new Discord.MessageEmbed()
-.setTitle('Link észlelve!')
-.setDescription(`${message.author.tag} ne használj linkeket!`)
-message.channel.send(embed)
-} 
 
 
 if(cmd === `${prefix}szavazas`){
