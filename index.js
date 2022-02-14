@@ -357,6 +357,8 @@ if(cmd === `${prefix}napiüzi`){
     .setFooter(clientname)
 
     message.channel.send({ embeds: [workEmbed] })
+
+}
            
 
 
