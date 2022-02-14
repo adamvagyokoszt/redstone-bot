@@ -522,6 +522,7 @@ if(cmd === `${prefix}macska`){
         .setFooter("A jelentkezéshe reagálj ezzel: 🎉")
         message.channel.send({ embeds: [Gembed] }).then(async msg => {
             await msg.react("🎉")
+        })
         
  
         setTimeout(async() => {
