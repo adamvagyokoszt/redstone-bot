@@ -80,7 +80,7 @@ client.on("message", async message => {
 
 
         if(cmd === `${prefix}ftadd`){
-        if(!message.member.hasPermission("KICK_MEMBERS" || "BAN_MEMBERS")) return message.channel.send("Ehhez a parancshoz nincs jogod!")
+        if (!message.member.permissions.has('ADMINISTRATOR')) return message.channel.send(`> __Nincs megfelelő engedélyed a parancs használatához!__`);
         let pay_money = Math.round(args[0]*100)/100
         if(isNaN(pay_money)) return message.reply(`A parancs helyes használata: ${prefix}ftadd <összeg> <@név>`)
         
