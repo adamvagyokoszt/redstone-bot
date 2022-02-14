@@ -605,7 +605,7 @@ if(cmd === `${prefix}kick`){
                 .setColor("GREEN")
                 .setDescription(`**Kickelte:** ${message.author.tag}\n**Kickelve lett:** ${kick_user.user.tag}\n**Kick indoka:** ${args.slice(1).join(" ")}`)
 
-            message.channel.send({ embeds: [parancsEmbed] });
+            message.channel.send({ embeds: [KickEmbed] });
 
                 kick_user.kick(args.slice(1).join(" "));
 
