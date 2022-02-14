@@ -550,20 +550,18 @@ if(cmd === `${prefix}macska`){
 
 
     if (cmd === `${prefix}clear`) {
-        if (message.member.permissions.has('KICK_MEMBERS')) {
-            if(message.guild.member(bot.user).hasPermission("ADMINISTRATOR"))
-
+            if (!message.member.permissions.has('MANAGE_MESSAGES') return message.channel.send(`> __Nincs megfelelő engedélyed a parancs használatához!__`);
             if (args[0] && isNaN(args[0]) && args[0] <= 100 || 0 < args[0] && args[0] < 101) {
 
                 
 
-                let clearEmbed = new Discord.MessageEmbed()
+                let clearEmbed = new MessageEmbed()
                 .setTitle(`Törölve lett ${Math.round(args[0])} Üzenet a szobából! 🧹`)
                 .setColor("GREEN")
                 .setAuthor(message.author.username)
                 .setTimestamp()
 
-                message.channel.send(clearEmbed);
+                message.channel.send({ embeds: [clearEmbed] });
 
 
                 message.channel.bulkDelete(Math.round(args[0]))
