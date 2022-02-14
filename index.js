@@ -235,7 +235,7 @@ if(cmd === `${prefix}work`){
 
     let random_money = Math.floor(Math.random()*500 +1)
 
-    let workEmbed = new Discord.MessageEmbed()
+    let workEmbed = new MessageEmbed()
     .setTitle("Munka")
 
     .addField(`${üzenetek[random_üzenet_szam]}` , ` A számládhoz került: ${random_money} FT!`)
@@ -244,9 +244,10 @@ if(cmd === `${prefix}work`){
 
     .setTimestamp(message.createdAt)
 
-    .setFooter(botname)
+    .setFooter(clientname)
 
-    message.channel.send(workEmbed)
+    message.channel.send({ embeds: [workEmbed] })
+           
 
 
     money[message.author.id] = {
