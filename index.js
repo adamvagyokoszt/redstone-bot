@@ -329,40 +329,9 @@ if(cmd === `${prefix}vasarol-vip+`){
         message.guild.member(message.author.id).roles.add(viprang_id);
 
         message.reply("**Sikeres vásárlás! A rangot odaadtam a pénzt levontam**")
-
     }
 
-if(cmd === `${prefix}napiüzi`){
-    let cd_role_id = "941768580670816317";
-    let cooldown_time = "1440";
 
-    if(message.member.roles.cache.has(cd_role_id)) return message.reply(`Ezt a parancsot 24 óránként használhatod`)
-
-    message.member.roles.add(cd_role_id)
-
-    let üzenetek = ["Amit egyszer megcsináltál soha nem fordíthatod vissza!","Soha ne vidd túlzásba semmit","Légy elégedett magadal","Légy mindig naprakész"]
-    let random_üzenet_szam = Math.floor(Math.random()*üzenetek.length)
-
-    let random_money = Math.floor(Math.random()*500 +1)
-
-    let workEmbed = new MessageEmbed()
-    .setTitle("Napi üzi")
-
-    .addField(`${üzenetek[random_üzenet_szam]}`)
-
-    .setColor("RANDOM")
-
-    .setTimestamp(message.createdAt)
-
-    .setFooter(clientname)
-
-    message.channel.send({ embeds: [workEmbed] })
-     
-  
-setTimeout(() => {
-    message.member.roles.remove(cd_role_id)
-    }, 1000* cooldown_time)
-}
 
 if(cmd === `${prefix}szavazas`){
     if (!message.member.permissions.has('BAN_MEMBERS')) return message.channel.send(`> __Nincs megfelelő engedélyed a parancs használatához!__`);
