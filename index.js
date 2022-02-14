@@ -1,4 +1,6 @@
 const { Client, Intents, MessageEmbed, Permissions } = require("discord.js")
+guild.roles.everyone.setPermissions([Permissions.FLAGS.SEND_MESSAGES, Permissions.FLAGS.VIEW_CHANNEL]);
+
 const client = new Client({ intents: [Intents.FLAGS.GUILDS,Intents.FLAGS.DIRECT_MESSAGE_TYPING,Intents.FLAGS.GUILD_MEMBERS,Intents.FLAGS.GUILD_PRESENCES,Intents.FLAGS.GUILD_MESSAGES ] });
 const botconfig = require("./botconfig.json")
 const money = require("./money.json")
