@@ -562,22 +562,8 @@ if(cmd === `${prefix}kick`){
         }
     }
 
-        
-
-})
-
-
-
-
-client.on("messageCreate", async message => {
-
-
-  if (message.author.bot) return;
-
-  let args = message.content.slice(prefix.length).trim().split(/ +/g);
-  let cmd = args.shift().toLowerCase()
-
-  if (cmd === "mute") {
+    
+  if (cmd === `${prefix}mute) {
     let member = message.mentions.members.first()
     if (!member) return message.reply("<a:nem:930191589438013500> **Használat:** _.mute < @Felhasználó > < Idő >_")
     if (!member.moderatable) return message.reply("Nincs jogod hozzá!")
@@ -591,7 +577,7 @@ client.on("messageCreate", async message => {
       return message.reply("<a:nem:930191589438013500> Hibás használat!\nA Maximális időtartam a **28 nap!**")
     }
 
-    const embed = new MessageEmbed()
+    const embed = MessageEmbed()
     .setTitle("<a:igen:929535644622008371> Sikeres")
     .setDescription(`**${member.user.tag}** le lett némítva ennyi időre: **${prettyMS(parsedTime, {verbose: true})}**`)
     .setColor("ORANGE")
@@ -602,7 +588,22 @@ client.on("messageCreate", async message => {
 
 
   }
-}) 
+
+
+
+    
+
+})
+
+
+
+
+
+  
+
+
+  
+
 
 
 
