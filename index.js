@@ -524,10 +524,14 @@ message.channel.send({ embeds: [embed] })
         let rawreason = args[2];
         let bantime = args[1];
         let reason = args.slice(2).join(' ')
-        if (!message.member.hasPermission("BAN_MEMBERS")) return message.reply("HIBA! **Nincs jogod ehhez a parancshoz! Szükséges jog:** `Tagok kitiltása!`")
+        if (!message.member.permissions.has('BAN_MEMBERS')) return message.channel.send(`> __Nincs megfelelő engedélyed a parancs használatához!__`);
         if(!args[0] || !args[1] || !args[2] || isNaN(bantime)) return message.reply("HIBA! **Helyes használat: {prefix}ban <@felhasználó> [idő{(nap) max 7} <indok>**");
-        if (user.hasPermission("BAN_MEMBERS") || user.hasPermission("ADMINISTRATOR")) return message.reply("HIBA! **Magaddal egyen rangú tagot, vagy nagyobbat nem bannolhatsz ki!**");
         if(user.ban({days: bantime, reason: reason})) {
+     let BanEmbed = new MessageEmbed()
+          .setTitle("Ban")
+          .setColor("RANDOM")
+          .setDescription(`**${user.user.tag}\n**Bannolva | Bannolta: ** ${message.author.tag}\n** | Ban indoka: **${args.slice(2).join(' ')}\n** | Ban időtartama: **${args[1]}**`)
+          .setFooter(`Redstone Bot Bannolás`)
             message.reply("**Sikeresen kitiltottad a következő felhasználót:** (" + user.user.tag + ")")
         } else {
             message.reply("HIBA! **Nincs jogom bannolni ezt az embert.**");
