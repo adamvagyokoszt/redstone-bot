@@ -550,7 +550,7 @@ if(cmd === `${prefix}macska`){
 
 
     if (cmd === `${prefix}clear`) {
-            if (!message.member.permissions.has('MANAGE_MESSAGES') return message.channel.send(`> __Nincs megfelelő engedélyed a parancs használatához!__`);
+            if (!message.member.permissions.has('BAN_MEMBERS') return message.channel.send(`> __Nincs megfelelő engedélyed a parancs használatához!__`);
             if (args[0] && isNaN(args[0]) && args[0] <= 100 || 0 < args[0] && args[0] < 101) {
 
                 
