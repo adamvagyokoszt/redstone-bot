@@ -270,7 +270,7 @@ if(cmd === `${prefix}shop`){
             .setAuthor(message.author.username)
             .setDescription(`${prefix}vasarol-vip (ÁR: 50000FT)|| ${prefix}vasarol-vip+ (ÁR: 120000FT)||${prefix}vasarol-gamer (ÁR: 12000FT)`)
             .setColor("RANDOM")
-            .setThumbnail(bot.user.displayAvatarURL())
+            .setThumbnail(client.user.displayAvatarURL())
 
             message.channel.send({ embeds: [ShopEmbed] })
            
