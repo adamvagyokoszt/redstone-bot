@@ -356,25 +356,6 @@ if(cmd === `${prefix}szavazas`){
 
 
 
-if(cmd === `${prefix}macska`){
-     let msg = await message.channel.send("Macska betöltése🐈...")
-     
-     let {body} = await superagent
-     .get ('https://aws.random.cat/meow')
- 
-     if(!{body}) return message.channel.send("Hiba történt⚠️! Próbáld meg újra.")
-
-
-     let catEmbed = new MessageEmbed()
-     .setColor("RANDOM")
-
-     .addField("Úgye milyen cuki😛")
-     .setImage(body.file)
-     .setTimestamp(message.createdAt)
-     .setFooter(clientname)
-     message.channel.send({ embeds: [catEmbed] , file: [body.file] })
-           
-}
     if(cmd === `${prefix}meme`){
         if(message.channel.type === 'dm') return message.reply("Itt nem tudod használni!");
         const subreddits = ["dankmeme", "meme", "me_irl"]
