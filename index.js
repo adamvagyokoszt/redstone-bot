@@ -526,9 +526,13 @@ if(cmd === `${prefix}macska`){
         
 
 
-        setTimeout(function () {
-            var peopleReacted = embedSent.reactions.get("🎉").users.filter(user => user.id !== client.user.id).array()
-            }, time);
+        setTimeout(async() => {
+            try{
+                const peopleReactedBOT =  await embedSent.reactions.cache.get("🎉").users.fetch();
+                var peopleReacted = peopleReactedBOT.array().filter(u => u.id !== bot.user.id);
+            }catch(e){
+                return message.channel.send(`Hiba törtét a **${tárgy}** sorsolása során! Hiba: `+"`"+e+"`")
+            }
         
             var winner;
  
