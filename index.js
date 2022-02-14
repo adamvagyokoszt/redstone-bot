@@ -1,5 +1,5 @@
 const { Client, Intents, MessageEmbed, Permissions } = require("discord.js")
-const client = new Client({ intents: [Intents.FLAGS.GUILDS,Intents.FLAGS.DIRECT_MESSAGE_TYPING,Intents.FLAGS.GUILD_MEMBERS,Intents.FLAGS.GUILD_PRESENCES,Intents.FLAGS.GUILD_MESSAGES,Intents.FLAGS.GUILD_MEMBER_ADD] });
+const client = new Client({ intents: [Intents.FLAGS.GUILDS,Intents.FLAGS.DIRECT_MESSAGE_TYPING,Intents.FLAGS.GUILD_MEMBERS,Intents.FLAGS.GUILD_PRESENCES,Intents.FLAGS.GUILD_MESSAGES] });
 const botconfig = require("./botconfig.json")
 const money = require("./money.json")
 var weather = require('weather-js');
@@ -26,7 +26,7 @@ client.on("ready", async() => {
     }, 5000)
 })
 /////) Üdvözlő rendszer/////////
-client.on("guildMemberAdd", (member) => {
+client.on("GUILD_MEMBER_ADD", (member) => {
     const rulesChanel = member.guild.rulesChannelID;
     const channelID = "730430575046819914"
 
@@ -35,7 +35,7 @@ client.on("guildMemberAdd", (member) => {
     const channele = member.guild.channels.cache.get(channelID);
     channele.send(messages)
 })
-client.on("guildMemberRemove", (member) => {
+client.on("GUILD_MEMBER_REMOVE", (member) => {
     const channelID = "730430575046819914"
 
 
