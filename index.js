@@ -409,7 +409,7 @@ if(cmd === `${prefix}macska`){
                 let current = result[0].current;
                 let location = result[0].location;
 
-                let WeatherEmbed = new Discord.MessageEmbed()
+                let WeatherEmbed = new MessageEmbed()
                 .setDescription(`**${current.skytext}**`)
                 .setAuthor(`Időjárás itt: ${current.observationpoint}`)
                 .setThumbnail(current.imageUrl)
@@ -421,7 +421,7 @@ if(cmd === `${prefix}macska`){
                 .addField("Szél", `${current.winddisplay}`, true)
                 .addField("Páratartalom:", `${current.humidity}%`, true)
 
-                message.channel.send(WeatherEmbed);
+                message.channel.send({ embeds: [WeatherEmbed] })
             })
 
         } else {
@@ -439,35 +439,7 @@ if(cmd === `${prefix}macska`){
       }
 
          
-    if(cmd === `${prefix}report`){
-    if(args[0] && message.mentions.members.first() && args[1]){
-
-        message.channel.send("A reportodat sikeresen elküldtük!")
-
-        let report_channel = "830713526339371029";
-
-        let report_embed = new Discord.MessageEmbed()
-            .setAuthor(message.mentions.members.first().user.tag + `| REPORTED`)
-            .setDescription("Report indoka:" + args.join(" ").slice(args[0].length))
-            .addField("Reportolta:", message.author.tag)
-            .setColor("RANDOM")
-            .setTimestamp(message.createdAt)
-            .setFooter(bot.user.username)
-
-            bot.channels.cache.get(report_channel).send(report_embed);
-
-    } else {
-        let he_embed = new Discord.MessageEmbed()
-            .setAuthor(message.author.tag + `| Használat`)
-            .setDescription(`${prefix}report @<név> <indok>`)
-            .setColor("RANDOM")
-            .setTimestamp(message.createdAt)
-            .setFooter(bot.user.username)
-
-            message.channel.send(he_embed);
-    }
-}
-
+    
 
 
 
@@ -475,16 +447,16 @@ if(cmd === `${prefix}macska`){
         if(!message.member.hasPermission("KICK_MEMBERS" || "BAN_MEMBERS")) return message.channel.send("Ehhez a parancshoz nincs jogod!")
         let szöveg = args.join(" ");
         if(szöveg) {
-            let Embed = new Discord.MessageEmbed()
+            let Embed = new MessageEmbed()
         .setColor("GREEN")
 
         .setAuthor(message.author.username)
 
         .addField("Szöveg:", szöveg)
 
-        .setFooter(`${botname} | ${message.createdAt}`)
+        .setFooter(`${clientname} | ${message.createdAt}`)
     
-        message.channel.send(Embed)
+        message.channel.send({ embeds: [Embed] })
         } else {
             message.reply("írj say szöveget!")
         }
