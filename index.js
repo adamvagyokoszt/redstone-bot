@@ -354,28 +354,27 @@ if(cmd === `${prefix}szavazas`){
 } 
 
 if(cmd ==`${prefix}setlog`){
-        if (!message.member.hasPermission("ADMINISTRATOR")) {
+        if (!message.member.permissions.has('ADMINISTRATOR')) {
           let embed = new MessageEmbed()
           .setColor("#080707")
           .setDescription(`Neked ehhez nincs jogod!`)
-          return message.channel.send(embed)
+          return message.channel.send({ embeds: [embed] });
         }
         let Channel = message.mentions.channels.first() || message.guild.channels.cache.get(args[0]);
         let xaxa = new MessageEmbed()
         .setColor("#080707")
         .addField("Hiba történt!", "Válassz csatornát")
-        if (!Channel) return message.channel.send(xaxa);
+        if (!Channel) return message.channel.send({ embeds: [xaxa] });
         let xaxaxa = new MessageEmbed()
         .setColor("#080707")
         .setDescription("Kérlek egy íráson alapuló csatornát válassz!")
-        if (Channel.type === "voice") return message.channel.send(xaxaxa);
-
+        if (Channel.type === "voice") return message.channel.send({ embeds: [xaxaxa] });
         await db.set(`logcsatorna_${message.guild.id}`, Channel.id);
 
         let Embed = new MessageEmbed()
         .setColor("#080707")
         .addField(`Sikeres interakció!`, `Sikeres csatorna beállítás`)
-        return message.channel.send(Embed);
+        return message.channel.send({ embeds: [Embed] });
 } 
 
 
