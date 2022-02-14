@@ -524,14 +524,12 @@ if(cmd === `${prefix}macska`){
             await msg.react("🎉")
         })
         
- 
-        setTimeout(async() => {
-            try{
-                const peopleReactedBOT =  await embedSend.reactions.cache.get("🎉").users.fetch();
-                var peopleReacted = peopleReactedBOT.array().filter(u => u.id !== bot.user.id);
-            }catch(e){
-                return message.channel.send(`Hiba törtét a **${tárgy}** sorsolása során! Hiba: `+"`"+e+"`")
-            }
+
+
+        setTimeout(function () {
+            var peopleReacted = embedSent.reactions.get("🎉").users.filter(user => user.id !== client.user.id).array()
+            }, time);
+        
             var winner;
  
             if(peopleReacted.length <= 0){
