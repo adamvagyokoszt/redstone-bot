@@ -565,4 +565,47 @@ if(cmd === `${prefix}kick`){
         
 
 })
+
+
+
+
+client.on("messageCreate", async message => {
+
+
+  if (message.author.bot) return;
+
+  let args = message.content.slice(prefix.length).trim().split(/ +/g);
+  let cmd = args.shift().toLowerCase()
+
+  if (cmd === "mute") {
+    let member = message.mentions.members.first()
+    if (!member) return message.reply("<a:nem:930191589438013500> **Használat:** _.mute < @Felhasználó > < Idő >_")
+    if (!member.moderatable) return message.reply("Nincs jogod hozzá!")
+
+    let time = args.slice(1).join(" ")
+    if (!time) return message.reply("<a:nem:930191589438013500> **Használat:** _.mute < @Felhasználó > < Idő >_")
+
+    let parsedTime = parseTime(time)
+
+    if (parsedTime < ms("1m") || parsedTime > ms("28d")) {
+      return message.reply("<a:nem:930191589438013500> Hibás használat!\nA Maximális időtartam a **28 nap!**")
+    }
+
+    const embed = new MessageEmbed()
+    .setTitle("<a:igen:929535644622008371> Sikeres")
+    .setDescription(`**${member.user.tag}** le lett némítva ennyi időre: **${prettyMS(parsedTime, {verbose: true})}**`)
+    .setColor("ORANGE")
+    .setTimestamp()
+    
+    await member.timeout(parsedTime);
+    return message.reply({ embeds: [embed] })
+
+
+  }
+}) 
+
+
+
+
+
 client.login(process.env.TOKEN)
