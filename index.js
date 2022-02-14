@@ -468,33 +468,6 @@ if(cmd === `${prefix}macska`){
     }
 }
 
-if(cmd === `${prefix}ötlet`){
-    if(args[1]){
-
-        message.channel.send("A ötletedet sikeresen elküldtük!")
-
-        let report_channel = "871043112653439036";
-
-        let report_embed = new Discord.MessageEmbed()
-            .setAuthor(`Ötlete`)
-            .setDescription("Ötlet:" + args.join(" ").slice(args[0].length))
-            .setColor("RANDOM")
-            .setTimestamp(message.createdAt)
-            .setFooter(bot.user.username)
-
-            bot.channels.cache.get(report_channel).send(report_embed);
-
-    } else {
-        let he_embed = new Discord.MessageEmbed()
-            .setAuthor(message.author.tag + `| Használat`)
-            .setDescription(`${prefix}ötlet <pingeld meg magad <ötleted>`)
-            .setColor("RANDOM")
-            .setTimestamp(message.createdAt)
-            .setFooter(bot.user.username)
-
-            message.channel.send(he_embed);
-    }
-}
 
 
 
@@ -627,33 +600,32 @@ if(cmd === `${prefix}kick`){
 
             if(args[1]){
 
-                let KickEmbed = new Discord.MessageEmbed()
+                let KickEmbed = new MessageEmbed()
                 .setTitle("KICK")
                 .setColor("GREEN")
                 .setDescription(`**Kickelte:** ${message.author.tag}\n**Kickelve lett:** ${kick_user.user.tag}\n**Kick indoka:** ${args.slice(1).join(" ")}`)
 
-            message.channel.send(KickEmbed);
+            message.channel.send({ embeds: [parancsEmbed] });
 
                 kick_user.kick(args.slice(1).join(" "));
 
             } else {
-            let parancsEmbed = new Discord.MessageEmbed()
+            let parancsEmbed = new MessageEmbed()
             .setTitle("Parancs használata:")
             .addField(`\`${prefix}kick <@név> [indok]\``, "RedstoneBot")
             .setColor("GREEN")
             .setDescription("HIBA: Kérlek adj meg egy indokot!!")
-
-            message.channel.send(parancsEmbed);
+            message.channel.send({ embeds: [parancsEmbed] });
             }
 
         } else {
-            let parancsEmbed = new Discord.MessageEmbed()
+            let parancsEmbed = new MessageEmbed()
             .setTitle("Parancs használata:")
             .addField(`\`${prefix}kick <@név> [indok]\``, "RedstoneBot")
             .setColor("GREEN")
             .setDescription("HIBA: Kérlek említs meg egy embert!")
 
-            message.channel.send(parancsEmbed);
+            message.channel.send({ embeds: [parancsEmbed] });
 
         }
     }
