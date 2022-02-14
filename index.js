@@ -495,8 +495,7 @@ if(cmd === `${prefix}macska`){
 
  if(cmd === `${prefix}giveaway`){
             const messageArray = message.content.split(" ");
-            if(!message.member.hasPermission("KICK_MEMBERS" || "BAN_MEMBERS")) return message.channel.send("Ehhez a parancshoz nincs jogod!")
- 
+            if (!message.member.permissions.has('ADMINISTRATOR')) return message.channel.send(`> __Nincs megfelelő engedélyed a parancs használatához!__`);
             let tárgy = "";
             let idő;
             let winnerCount;
@@ -515,13 +514,13 @@ if(cmd === `${prefix}macska`){
             return message.reply("Kérlek add meg a nyereményjáték tárgyát!")
         }
  
-        var Gembed = new Discord.MessageEmbed()
+        var Gembed = new MessageEmbed()
         .setColor("RED")
         .setTitle("🎉 Nyereményjáték 🎉")
         .setDescription(`**${tárgy}**`)
         .addField("`Időtartam:`", ms(ms(idő), {long: true}), true)
         .setFooter("A jelentkezéshe reagálj ezzel: 🎉")
-        var embedSend = await message.channel.send(Gembed);
+        message.channel.send({ embeds: [Gembed] });
         embedSend.react("🎉");
  
         setTimeout(async() => {
@@ -549,28 +548,7 @@ if(cmd === `${prefix}macska`){
         }
 
 
-    if (cmd === `${prefix}clear`) {
-            if (!message.member.permissions.has('BAN_MEMBERS') return message.channel.send(`> __Nincs megfelelő engedélyed a parancs használatához!__`);
-            if (args[0] && isNaN(args[0]) && args[0] <= 100 || 0 < args[0] && args[0] < 101) {
-
-                
-
-                let clearEmbed = new MessageEmbed()
-                .setTitle(`Törölve lett ${Math.round(args[0])} Üzenet a szobából! 🧹`)
-                .setColor("GREEN")
-                .setAuthor(message.author.username)
-                .setTimestamp()
-
-                message.channel.send({ embeds: [clearEmbed] });
-
-
-                message.channel.bulkDelete(Math.round(args[0]))
-
-
-            }
-        }
-    }
-    
+        
     ///////////////////////BANxKICK///////////////////////
 
     
