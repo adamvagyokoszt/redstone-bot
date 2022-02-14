@@ -73,7 +73,7 @@ client.on("message", async message => {
 
         .setThumbnail(profilkep)
 
-        .setFooter(`${botname} | ${message.createdAt} | ${bot.users.cache.size}.Tag`)
+        .setFooter(`${clientname} | ${message.createdAt}`)
 
         message.channel.send({ embeds: [MoneyEmbed]})
     }
