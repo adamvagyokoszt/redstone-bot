@@ -379,7 +379,7 @@ const embed = new MessageEmbed()
 .setTitle('Help')
 .setDescription(`Üdv én vagyok Redstone bot | **Készítő:** *Ádám#9999* | **Parancsaim:** http://redstone.hupont.hu/ | **Folyamatosan fejlődök. Hamarosan jön az economy update aminsok jó dolgok tartalmaz** `)
 .setColor('RANDOM')
-.setFooter('Help parancs ${clientname}')
+.setFooter('Help parancs Redstone bot')
 message.channel.send({ embeds: [embed] })
             
 } 
