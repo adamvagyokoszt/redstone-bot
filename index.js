@@ -1,4 +1,4 @@
-const { Client, Intents, MessageEmbed } = require('discord.js');
+const { Client, Intents, MessageEmbed, Permissions } = require('discord.js');
 const client = new Client({ intents: [Intents.FLAGS.GUILDS,Intents.FLAGS.DIRECT_MESSAGE_TYPING,Intents.FLAGS.GUILD_MEMBERS,Intents.FLAGS.GUILD_PRESENCES,Intents.FLAGS.GUILD_MESSAGES ] });
 const botconfig = require("./botconfig.json")
 const money = require("./money.json")
@@ -80,7 +80,7 @@ client.on("message", async message => {
 
 
         if(cmd === `${prefix}ftadd`){
-        if(!message.member.permissions.has(Permissions.FLAGS.MANAGE_ROLES,Permissions.FLAGS.BAN_MEMBERS)) return message.channel.send("Ehhez a parancshoz nincs jogod!")
+        if(!message.member.permissions.has(Permissions.FLAGS.MANAGE_ROLES,Permission.FLAGS.BAN_MEMBERS)) return message.channel.send("Ehhez a parancshoz nincs jogod!")
         let pay_money = Math.round(args[0]*100)/100
         if(isNaN(pay_money)) return message.reply(`A parancs helyes használata: ${prefix}ftadd <összeg> <@név>`)
         
