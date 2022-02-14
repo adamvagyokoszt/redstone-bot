@@ -610,23 +610,22 @@ if(cmd === `${prefix}kick`){
                 kick_user.kick(args.slice(1).join(" "));
 
             } else {
-            let parancsEmbed = new MessageEmbed()
+            let kick2Embed = new MessageEmbed()
             .setTitle("Parancs használata:")
             .addField(`\`${prefix}kick <@név> [indok]\``, "RedstoneBot")
             .setColor("GREEN")
             .setDescription("HIBA: Kérlek adj meg egy indokot!!")
-            message.channel.send({ embeds: [parancsEmbed] });
+            message.channel.send({ embeds: [kick2Embed] });
             }
 
         } else {
-            let parancsEmbed = new MessageEmbed()
+            let kick3Embed = new MessageEmbed()
             .setTitle("Parancs használata:")
             .addField(`\`${prefix}kick <@név> [indok]\``, "RedstoneBot")
             .setColor("GREEN")
             .setDescription("HIBA: Kérlek említs meg egy embert!")
 
-            message.channel.send({ embeds: [parancsEmbed] });
-
+            message.channel.send({ embeds: [kick3Embed] });
         }
     }
 
