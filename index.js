@@ -6,6 +6,7 @@ var weather = require('weather-js');
 const ms = require("ms");
 const superagent = require('superagent');
 const randomPuppy = require('random-puppy');
+const fs = require("fs");
 let clientname = "Redstone Bot"
 
 client.on("ready", async() => {
