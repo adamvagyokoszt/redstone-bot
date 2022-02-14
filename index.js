@@ -444,7 +444,7 @@ if(cmd === `${prefix}macska`){
 
 
     if(cmd === `${prefix}embedsay`){
-        if(!message.member.hasPermission("KICK_MEMBERS" || "BAN_MEMBERS")) return message.channel.send("Ehhez a parancshoz nincs jogod!")
+        if (!message.member.permissions.has('BAN_MEMBERS')) return message.channel.send(`> __Nincs megfelelő engedélyed a parancs használatához!__`);
         let szöveg = args.join(" ");
         if(szöveg) {
             let Embed = new MessageEmbed()
