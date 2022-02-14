@@ -157,29 +157,29 @@ client.on("message", async message => {
         let result3 = Math.floor(Math.random() * slots.length)
 
         if(slots[result1] === slots[result2] && slots[result3]){
-            let wEmbed = new Discord.MessageEmbed()
+            let wEmbed = new MessageEmbed()
             .setTitle('🎉 Szerencse játék | slot machine 🎉')
             .addField(message.author.username, `Nyertél! Ennyit kaptál: ${tét*1.6}ft.`)
             .addField("Eredmény:", slots[result1] + slots[result2] + slots[result3])
             .setColor("RANDOM")
             .setTimestamp(message.createdAt)
             .setFooter(botname)
-            message.channel.send(wEmbed)
-            
-            money[message.author.id] = {
+            message.channel.send({ embeds: [wEmbed] })
+           
+ money[message.author.id] = {
                 money: selfMoney + tét*1.6,
                 user_id: message.author.id
             }
         } else {
-            let wEmbed = new Discord.MessageEmbed()
+            let wEmbed = new MessageEmbed()
             .setTitle('🎉 Szerencse játék | slot machine 🎉')
             .addField(message.author.username, `Vesztettél! Ennyit buktál: ${tét}ft.`)
             .addField("Eredmény:", slots[result1] + slots[result2] + slots[result3])
             .setColor("RANDOM")
             .setTimestamp(message.createdAt)
             .setFooter(botname)
-            message.channel.send(wEmbed)
-            
+            message.channel.send({ embeds: [wEmbed] })
+           
             money[message.author.id] = {
                 money: selfMoney - tét,
                 user_id: message.author.id
