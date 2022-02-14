@@ -75,7 +75,7 @@ client.on("message", async message => {
 
         .setFooter(`${botname} | ${message.createdAt} | ${bot.users.cache.size}.Tag`)
 
-        message.channel.send({ embeds: [MoneyEmbed]}
+        message.channel.send({ embeds: [MoneyEmbed]})
     }
 
 
