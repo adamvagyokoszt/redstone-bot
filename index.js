@@ -255,7 +255,10 @@ if(cmd === `${prefix}work`){
         user_id: message.author.id
 }
 
-
+setTimeout(() => {
+    message.member.roles.remove(cd_role_id)
+    }, 1000* cooldown_time)
+}
 
            
 
@@ -329,11 +332,96 @@ if(cmd === `${prefix}vasarol-vip+`){
 
     }
 
+if(cmd === `${prefix}napiüzi`){
+    let cd_role_id = "941768580670816317";
+    let cooldown_time = "1440";
 
+    if(message.member.roles.cache.has(cd_role_id)) return message.reply(`Ezt a parancsot 24 óránként használhatod`)
+
+    message.member.roles.add(cd_role_id)
+
+    let üzenetek = ["Amit egyszer megcsináltál soha nem fordíthatod vissza!","Soha ne vidd túlzásba semmit","Légy elégedett magadal","Légy mindig naprakész"]
+    let random_üzenet_szam = Math.floor(Math.random()*üzenetek.length)
+
+    let random_money = Math.floor(Math.random()*500 +1)
+
+    let workEmbed = new MessageEmbed()
+    .setTitle("Napi üzi")
+
+    .addField(`${üzenetek[random_üzenet_szam]}`)
+
+    .setColor("RANDOM")
+
+    .setTimestamp(message.createdAt)
+
+    .setFooter(clientname)
+
+    message.channel.send({ embeds: [workEmbed] })
            
 
 
-   
+    
+setTimeout(() => {
+    message.member.roles.remove(cd_role_id)
+    }, 1000* cooldown_time)
+}
+if(cmd === `${prefix}szavazas`){
+    if(!message.member.hasPermission("KICK_MEMBERS" || "BAN_MEMBERS")) return message.channel.send("Ehhez a parancshoz nincs jogod!")
+    if(message.channel.type === 'dm') return message.reply("Itt nem tudod használni!");
+    if(args[0]){
+        let szavazasembed = new MessageEmbed()
+        .setAuthor(message.author.tag + ` | Szavazást indított!`)
+        .setDescription(args.join(" "))
+        .setColor("RANDOM")
+        .setTimestamp(message.createdAt)
+        .setFooter(client.user.username)
+
+        message.channel.send({ embeds: [szavazasembed] }).then(async msg => {
+            await msg.react("✅")
+            await msg.react("❌")
+        })
+    } else {
+        message.reply("Kérlek add meg a szavazást!")
+    }
+} 
+
+
+
+
+if(cmd === `${prefix}macska`){
+     let msg = await message.channel.send("Macska betöltése🐈...")
+     
+     let {body} = await superagent
+     .get ('https://aws.random.cat/meow')
+ 
+     if(!{body}) return message.channel.send("Hiba történt⚠️! Próbáld meg újra.")
+
+
+     let catEmbed = new MessageEmbed()
+     .setColor("RANDOM")
+
+     .addField("Úgye milyen cuki😛")
+     .setImage(body.file)
+     .setTimestamp(message.createdAt)
+     .setFooter(botname)
+     message.channel.send({ embeds: [catEmbed] })
+           
+}
+    if(cmd === `${prefix}meme`){
+        if(message.channel.type === 'dm') return message.reply("Itt nem tudod használni!");
+        const subreddits = ["dankmeme", "meme", "me_irl"]
+        const random = subreddits[Math.floor(Math.random() * subreddits.length)]
+
+        const IMG = await randomPuppy(random)
+        const MemeEmbed = new Discord.MessageEmbed()
+        .setColor("RANDOM")
+        .setImage(IMG)
+        .setTitle(`Keresési szöveg: ${random} (KATT IDE!)`)
+        .setURL(`https://www.reddit.com/r/${random}`)
+
+        message.channel.send(MemeEmbed)
+    } 
+
 
 
  if(cmd === `${prefix}help`){
