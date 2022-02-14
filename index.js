@@ -266,14 +266,16 @@ if(cmd === `${prefix}lb`){
         .sort((a, b) => b.split("FT")[0] - a.split("FT")[0])
         .slice(0, 10)
 
-        let LbEmbed = new Discord.MessageEmbed()
+        let LbEmbed = new MessageEmbed()
         .setTitle("Leaderboard")
         .setColor("RANDOM")
         .addField("Pénz top lista | TOP10", toplist, true)
         .setTimestamp(message.createdAt)
-        .setFooter(botname)
+        .setFooter(clientname)
 
-        message.channel.send(LbEmbed)
+        message.channel.send({ embeds: [LbEmbed] })
+           
+
     }
 
 ///////SHOP//////////
