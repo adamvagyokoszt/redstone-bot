@@ -621,7 +621,7 @@ if(cmd === `${prefix}ötlet`){
 
 
 if(cmd === `${prefix}kick`){
-        if (!message.member.hasPermission("KICK_MEMBERS")) return message.reply("HIBA! **Nincs jogod ehhez a parancshoz! Szükséges jog:** `Tagok kirúgása!`")
+        if (!message.member.permissions.has('KICK_MEMBERS')) return message.channel.send(`> __Nincs megfelelő engedélyed a parancs használatához!__`);
         let kick_user = message.mentions.members.first();
         if(args[0] && kick_user){
 
