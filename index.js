@@ -64,7 +64,7 @@ client.on("message", async message => {
     if(cmd === `${prefix}egyenleg`){
         let profilkep = message.author.displayAvatarURL();
 
-        let MoneyEmbed = new Discord.MessageEmbed()
+        let MoneyEmbed = new MessageEmbed()
         .setAuthor(message.author.username)
 
         .setColor("GREEN")
