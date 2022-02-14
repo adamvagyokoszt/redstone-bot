@@ -373,9 +373,17 @@ if(cmd === `${prefix}szavazas`){
 
 
 
- if(cmd === `${prefix}help`){
-    message.channel.send("Parancsok: http://redstone.hupont.hu/ , Készítő: Ádám#9999 , A bot hostingja: https://dashboard.heroku.com/apps , ");
-}
+ 
+if(cmd === `${prefix}help`) {
+const embed = new MessageEmbed() 
+.setTitle('Help')
+.setDescription(`Üdv én vagyok Redstone bot | **Készítő:** *Ádám#9999* | **Parancsaim:** http://redstone.hupont.hu/ | **Folyamatosan fejlődök. Hamarosan jön az economy update aminsok jó dolgok tartalmaz** `)
+.setColor('RANDOM')
+.setFooter('Help parancs ${clientname}')
+message.channel.send({ embeds: [embed] })
+            
+} 
+
     
     if(cmd === `${prefix}weather`){
         if(args[0]){
