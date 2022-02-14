@@ -520,8 +520,9 @@ if(cmd === `${prefix}macska`){
         .setDescription(`**${tárgy}**`)
         .addField("`Időtartam:`", ms(ms(idő), {long: true}), true)
         .setFooter("A jelentkezéshe reagálj ezzel: 🎉")
-        message.channel.send({ embeds: [Gembed] });
-        embedSend.react("🎉");
+        message.channel.send({ embeds: [Gembed] }).then(async msg => {
+            await msg.react("🎉")
+        
  
         setTimeout(async() => {
             try{
