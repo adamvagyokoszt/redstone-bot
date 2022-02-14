@@ -268,7 +268,7 @@ setTimeout(() => {
 if(cmd === `${prefix}shop`){
         let ShopEmbed = new MessageEmbed()
             .setAuthor(message.author.username)
-            .setDescription(`${prefix}vasarol-vip (ÁR: 50000FT)|| ${prefix}vasarol-vip+ (ÁR: 120000FT)||${prefix}vasarol-gamer (ÁR: 12000FT)`)
+            .setDescription(`${prefix}vasarol-vip (ÁR: 50000FT) | ${prefix}vasarol-vip+ (ÁR: 120000FT) | ${prefix}vasarol-gamer (ÁR: 12000FT)`)
             .setColor("RANDOM")
             .setThumbnail(client.user.displayAvatarURL())
 
@@ -345,7 +345,7 @@ if(cmd === `${prefix}napiüzi`){
 
     let random_money = Math.floor(Math.random()*500 +1)
 
-    let workEmbed = new Discord.MessageEmbed()
+    let workEmbed = new MessageEmbed()
     .setTitle("Napi üzi")
 
     .addField(`${üzenetek[random_üzenet_szam]}`)
@@ -354,9 +354,10 @@ if(cmd === `${prefix}napiüzi`){
 
     .setTimestamp(message.createdAt)
 
-    .setFooter(botname)
+    .setFooter(clientname)
 
-    message.channel.send(workEmbed)
+    message.channel.send({ embeds: [workEmbed] })
+           
 
 
     
@@ -368,14 +369,14 @@ if(cmd === `${prefix}szavazas`){
     if(!message.member.hasPermission("KICK_MEMBERS" || "BAN_MEMBERS")) return message.channel.send("Ehhez a parancshoz nincs jogod!")
     if(message.channel.type === 'dm') return message.reply("Itt nem tudod használni!");
     if(args[0]){
-        let szavazasembed = new Discord.MessageEmbed()
+        let szavazasembed = new MessageEmbed()
         .setAuthor(message.author.tag + ` | Szavazást indított!`)
         .setDescription(args.join(" "))
         .setColor("RANDOM")
         .setTimestamp(message.createdAt)
-        .setFooter(bot.user.username)
+        .setFooter(client.user.username)
 
-        message.channel.send(szavazasembed).then(async msg => {
+        message.channel.send({ embeds: [szavazasembed] }).then(async msg => {
             await msg.react("✅")
             await msg.react("❌")
         })
@@ -396,17 +397,15 @@ if(cmd === `${prefix}macska`){
      if(!{body}) return message.channel.send("Hiba történt⚠️! Próbáld meg újra.")
 
 
-     let catEmbed = new Discord.MessageEmbed()
+     let catEmbed = new MessageEmbed()
      .setColor("RANDOM")
 
      .addField("Úgye milyen cuki😛")
      .setImage(body.file)
-
      .setTimestamp(message.createdAt)
-
      .setFooter(botname)
-
-     message.channel.send(catEmbed)
+     message.channel.send({ embeds: [catEmbed] })
+           
 }
     if(cmd === `${prefix}meme`){
         if(message.channel.type === 'dm') return message.reply("Itt nem tudod használni!");
