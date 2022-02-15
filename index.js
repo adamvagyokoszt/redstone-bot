@@ -342,7 +342,7 @@ message.channel.send({ embeds: [embed] })
 } 
 
 if(cmd === `${prefix}szavazas`){
-    if (!message.member.permissions.has('BAN_MEMBERS')) return message.channel.send(`> __Nincs megfelelő engedélyed a parancs használatához!__`);
+    if (!message.member.permissions.has('KICK_MEMBERS')) return message.channel.send(`> __Nincs megfelelő engedélyed a parancs használatához!__`);
     if(message.channel.type === 'dm') return message.reply("Itt nem tudod használni!");
     if(args[0]){
         let szavazasembed = new MessageEmbed()
@@ -442,7 +442,7 @@ message.channel.send({ embeds: [embed] })
 
 
     if(cmd === `${prefix}embedsay`){
-        if (!message.member.permissions.has('BAN_MEMBERS')) return message.channel.send(`> __Nincs megfelelő engedélyed a parancs használatához!__`);
+        if (message.member.permissions.has('BAN_MEMBERS')) return message.channel.send(`> __Nincs megfelelő engedélyed a parancs használatához!__`);
         let szöveg = args.join(" ");
         if(szöveg) {
             let Embed = new MessageEmbed()
