@@ -334,7 +334,7 @@ if(cmd === `${prefix}vasarol-vip+`){
 
 if(message.content.includes("https://" || "http://"
 )) {
-if (message.member.permissions.has('ADMINISTRATOR')) return message.channel.send(`> __Nincs megfelelő engedélyed a parancs használatához!__`);
+if (message.member.permissions.has('KICK_MEMBERS')) return message.channel.send(`> __Nincs megfelelő engedélyed a parancs használatához!__`);
 message.delete();
 const embed = new MessageEmbed()
 .setTitle('Link észlelve!')
