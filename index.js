@@ -584,6 +584,25 @@ if(cmd === `${prefix}kick`){
     }
 
     
+        let ember = message.mentions.members.first()
+        let indok = args.slice(1).join(" ") || "Nincs indok csatolva."
+        let permission = "BAN_MEMBERS"
+        if (!message.member.hasPermission("BAN_MEMBERS")) {
+          let embed = new MessageEmbed()
+          .setColor("#080707")
+          .setDescription(`Neked ehhez nincs jogod!\n Szükséges jog: **${permission}**  :man_detective: `)
+          return message.channel.send(embed)
+        }
+        if(!args[0]) return message.channel.send("$ban <felhasználó> <indok>")
+        if(!ember) return message.channel.send("$Kérlek írj be egy felhasználót!")
+        if(ember.id === message.author.id) return message.channel.send("Nem tudod saját magadat kitiltani!")
+        if(ember) {
+            if(ember.bannable) {
+                ember.ban({reason: indok}).then(() => {
+                message.channel.send(`**${ember.user.tag}** ki lett tiltva. \nIndok: **${indok}**`)
+            })
+        }} 
+
     
 
 })
@@ -613,40 +632,10 @@ Asztali gépen: ${cStatus.desktop ? statusMap[cStatus.desktop] : "**X**"}`;
 });
 
 
-client.on("messageCreate", async message => {
 
 
-  if (message.author.bot) return;
-
-  let args = message.content.slice(prefix.length).trim().split(/ +/g);
-  let cmd = args.shift().toLowerCase()
-
-  if (cmd === "mute") {
-    let member = message.mentions.members.first()
-    if (!member) return message.reply("<a:nem:930191589438013500> **Használat:** _.mute < @Felhasználó > < Idő >_")
-    if (!member.moderatable) return message.reply("Nincs jogod hozzá!")
-
-    let time = args.slice(1).join(" ")
-    if (!time) return message.reply("<a:nem:930191589438013500> **Használat:** _.mute < @Felhasználó > < Idő >_")
-
-    let parsedTime = parseTime(time)
-
-    if (parsedTime < ms("1m") || parsedTime > ms("28d")) {
-      return message.reply("<a:nem:930191589438013500> Hibás használat!\nA Maximális időtartam a **28 nap!**")
-    }
-
-    const embed = new Discord.MessageEmbed()
-    .setTitle("<a:igen:929535644622008371> Sikeres")
-    .setDescription(`**${member.user.tag}** le lett némítva ennyi időre: **${prettyMS(parsedTime, {verbose: true})}**`)
-    .setColor("ORANGE")
-    .setTimestamp()
-    
-    await member.timeout(parsedTime);
-    return message.reply({ embeds: [embed] })
-
-
-  }
-}) 
+  
+ 
 
 
 
