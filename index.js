@@ -4,10 +4,10 @@ const botconfig = require("./botconfig.json")
 const money = require("./money.json")
 var weather = require('weather-js');
 const ms = require("ms");
+const os = require("os");
 const superagent = require('superagent');
 const randomPuppy = require('random-puppy');
 const fs = require("fs");
-const os = require('os');
 let clientname = "Redstone Bot"
 
 client.on("ready", async() => {
@@ -460,47 +460,7 @@ message.channel.send({ embeds: [embed] })
         }
     }
 
-////BOT INFO///
-
-
-
-if(cmd === `${prefix}botinfo) {
-        const embed = new MessageEmbed()
-            .setThumbnail(client.user.displayAvatarURL())
-            .setTitle('Bot statisztikái')
-            .setColor('#000000')
-            .addFields(
-                {
-                    name: '🌐 Szerverek',
-                    value: `${client.guilds.cache.size} Szerveren`,
-                    inline: true,
-                },
-                {
-                    name: '📺 Szobák',
-                    value: `Összesen ${client.channels.cache.size} szobán van.`,
-                    inline: true,
-                },
-                {
-                    name: '👥 Szerver tagok',
-                    value: `A szervereken ${client.users.cache.size} tag van.`,
-                    inline: true,
-                },
-                {
-                    name: '⏳ Ping',
-                    value: `${Math.round(client.ws.ping)}ms`,
-                    inline: true,
-                },
-                {
-                    name: 'Csatlakozás',
-                    value: client.user.createdAt,
-                    inline: true,
-                },
-            )
-            .setFooter(`${message.author.tag}`, message.author.displayAvatarURL());
-
-        return message.channel.send(embed);
-    },
-};  
+    
     
 
  if(cmd === `${prefix}giveaway`){
@@ -572,8 +532,8 @@ if(cmd === `${prefix}botinfo) {
         let rawreason = args[2];
         let bantime = args[1];
         let reason = args.slice(2).join(' ')
-        if (!message.member.permissions.has('KICK_MEMBERS')) return message.channel.send(`> __Nincs megfelelő engedélyed a parancs használatához!__`);
-        if(!args[0] || !args[1] || !args[2] || isNaN(bantime)) return message.reply("HIBA! **Helyes használat: ${prefix}tempban <@felhasználó> [idő{(nap) max 7} <indok>**");
+        if (!message.member.permissions.has('BAN_MEMBERS')) return message.channel.send(`> __Nincs megfelelő engedélyed a parancs használatához!__`);
+        if(!args[0] || !args[1] || !args[2] || isNaN(bantime)) return message.reply("HIBA! **Helyes használat: {prefix}ban <@felhasználó> [idő{(nap) max 7} <indok>**");
         if(user.ban({days: bantime, reason: reason})) {
      let BanEmbed = new MessageEmbed()
           .setTitle("Ban")
@@ -625,8 +585,6 @@ if(cmd === `${prefix}kick`){
     }
 
     
-        
-
     
 
 })
@@ -654,14 +612,6 @@ Asztali gépen: ${cStatus.desktop ? statusMap[cStatus.desktop] : "**X**"}`;
         m.channel.send({ embeds: [embed] })
     };
 });
-
-
-
-
-  
- 
-
-
 
 
 
