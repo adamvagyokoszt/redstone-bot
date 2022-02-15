@@ -497,8 +497,8 @@ message.channel.send({ embeds: [embed] })
 
         setTimeout(async() => {
             try{
-                const peopleReactedBOT =  await embedSent.reactions.cache.get("🎉").users.fetch();
-                var peopleReacted = peopleReactedBOT.array().filter(u => u.id !== bot.user.id);
+                const peopleReactedBot =  await embedSend.reactions.cache.get("🎉").users.fetch();
+                var peopleReacted = peopleReactedBot.array().filter(u => u.id !== bot.user.id);
             }catch(e){
                 return message.channel.send(`Hiba törtét a **${tárgy}** sorsolása során! Hiba: `+"`"+e+"`")
             }
@@ -537,7 +537,7 @@ message.channel.send({ embeds: [embed] })
      let BanEmbed = new MessageEmbed()
           .setTitle("Ban")
           .setColor("RANDOM")
-          .setDescription(`**${user.user.tag}\n**Bannolva | Bannolta: ** ${message.author.tag}\n** | Ban indoka: **${args.slice(2).join(' ')}\n** | Ban időtartama: **${args[1]}**`)
+          .setDescription(`**${user.user.tag}\n**Bannolva | Bannolta: ** ${message.author.tag}\n**  Ban indoka: **${args.slice(2).join(' ')}\n**  Ban időtartama: **${args[1]}**`)
           .setFooter(`Redstone Bot Bannolás`)
             message.channel.send({ embeds: [BanEmbed]})
         } else {
