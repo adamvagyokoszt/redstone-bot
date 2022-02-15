@@ -497,7 +497,7 @@ message.channel.send({ embeds: [embed] })
 
         setTimeout(async() => {
             try{
-                const peopleReactedBot =  await embedSend.reactions.cache.get("🎉").users.fetch();
+                const peopleReactedBot =  await Gembed.reactions.cache.get("🎉").users.fetch();
                 var peopleReacted = peopleReactedBot.array().filter(u => u.id !== bot.user.id);
             }catch(e){
                 return message.channel.send(`Hiba törtét a **${tárgy}** sorsolása során! Hiba: `+"`"+e+"`")
