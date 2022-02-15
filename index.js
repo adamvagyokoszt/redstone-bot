@@ -568,6 +568,7 @@ if(cmd === `${prefix}kick`){
                 .setDescription(`**Kickelte:** ${message.author.tag}\n**Kickelve lett:** ${kick_user.user.tag}\n**Kick indoka:** ${args.slice(1).join(" ")}`)
 
             message.channel.send({ embeds: [KickEmbed] });
+            user.sendMessage(`Ki lettél rúgva a Rolix Redstonjai szerverről!** Oka: ** ${args.slice(1).join(" ")}**`);
 
                 kick_user.kick(args.slice(1).join(" "));
 
