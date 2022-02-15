@@ -625,23 +625,7 @@ if(cmd === `${prefix}kick`){
     }
 
     
-        let ember = message.mentions.members.first()
-        let indok = args.slice(1).join(" ") || "Nincs indok csatolva."
-        if (!message.member.permissions.has('BAN_MEMBERS')) return message.channel.send(`> __Nincs megfelelő engedélyed a parancs használatához!__`); {
-          let embed = new MessageEmbed()
-          .setColor("#080707")
-          .setDescription(`Neked ehhez nincs jogod!\n Szükséges jog: **${permission}**  :man_detective: `)
-          return message.channel.send({ embeds: [embed] });
-        }
-        if(!args[0]) return message.channel.send("$ban <felhasználó> <indok>")
-        if(!ember) return message.channel.send("$Kérlek írj be egy felhasználót!")
-        if(ember.id === message.author.id) return message.channel.send("Nem tudod saját magadat kitiltani!")
-        if(ember) {
-            if(ember.bannable) {
-                ember.ban({reason: indok}).then(() => {
-                message.channel.send(`**${ember.user.tag}** ki lett tiltva. \nIndok: **${indok}**`)
-            })
-        }} 
+        
 
     
 
