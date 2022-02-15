@@ -30,15 +30,14 @@ client.on("ready", async() => {
 const welcomeChannelId = "730430575046819914"
 
 client.on("guildMemberAdd", async (member) => {
-    const img = await generateImage(member)
     member.guild.channels.cache.get(welcomeChannelId).send({
-        content: `<@${member.id}> Üdvözlünk a szerveren!`,
+        content: `<@${member.id}> Üdvözlünk a Rolix Fan Klub szerveren!`,
     })
 });
 
 client.on("guildMemberRemove", async (member) => {
     member.guild.channels.cache.get(welcomeChannelId).send({
-        content: `<@${member.id}> Kilépett a szerverről!`,
+        content: `<@${member.user.tag}> Kilépett a szerverről!`,
     })
 }); 
 
