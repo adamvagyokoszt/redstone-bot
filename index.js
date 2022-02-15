@@ -573,7 +573,7 @@ if(cmd === `${prefix}botinfo) {
         let bantime = args[1];
         let reason = args.slice(2).join(' ')
         if (!message.member.permissions.has('BAN_MEMBERS')) return message.channel.send(`> __Nincs megfelelő engedélyed a parancs használatához!__`);
-        if(!args[0] || !args[1] || !args[2] || isNaN(bantime)) return message.reply("HIBA! **Helyes használat: {prefix}ban <@felhasználó> [idő{(nap) max 7} <indok>**");
+        if(!args[0] || !args[1] || !args[2] || isNaN(bantime)) return message.reply("HIBA! **Helyes használat: ${prefix}tempban <@felhasználó> [idő{(nap) max 7} <indok>**");
         if(user.ban({days: bantime, reason: reason})) {
      let BanEmbed = new MessageEmbed()
           .setTitle("Ban")
@@ -628,11 +628,11 @@ if(cmd === `${prefix}kick`){
         let ember = message.mentions.members.first()
         let indok = args.slice(1).join(" ") || "Nincs indok csatolva."
         let permission = "BAN_MEMBERS"
-        if (!message.member.hasPermission("BAN_MEMBERS")) {
+        if (!message.member.permissions.has('BAN_MEMBERS')) {
           let embed = new MessageEmbed()
           .setColor("#080707")
           .setDescription(`Neked ehhez nincs jogod!\n Szükséges jog: **${permission}**  :man_detective: `)
-          return message.channel.send(embed)
+          return message.channel.send({ embeds: [embed] });
         }
         if(!args[0]) return message.channel.send("$ban <felhasználó> <indok>")
         if(!ember) return message.channel.send("$Kérlek írj be egy felhasználót!")
