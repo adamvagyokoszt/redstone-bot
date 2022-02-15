@@ -28,7 +28,11 @@ client.on("ready", async() => {
 /////) Üdvözlő rendszer/////////
 client.on("GUILD_MEMBER_ADD", (member) => {
     const rulesChanel = member.guild.rulesChannelID;
-    const channelID = "730430575046819914"
+    const channelId = "730430575046819914"
+
+
+    if(!channelId) return;
+    if(!rulesChanel) return;
 
     const messages = `Szia <@${member.id}>! Üdv itt a Rolix Fan klub szerveren. Szabályzat:${member.guild.channels.cache.get(rulesChanel).toString()}`
 
@@ -36,7 +40,10 @@ client.on("GUILD_MEMBER_ADD", (member) => {
     channele.send(messages)
 })
 client.on("GUILD_MEMBER_REMOVE", (member) => {
-    const channelID = "730430575046819914"
+    const channelId = "730430575046819914"
+
+
+    if(!channelId) return;
 
 
     const  message = `Viszlát <${member.user.tag}>! Remélem vissza jössz egyszer!`
