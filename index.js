@@ -627,8 +627,7 @@ if(cmd === `${prefix}kick`){
     
         let ember = message.mentions.members.first()
         let indok = args.slice(1).join(" ") || "Nincs indok csatolva."
-        let permission = "BAN_MEMBERS"
-        if (!message.member.permissions.has('BAN_MEMBERS')) {
+        if (!message.member.permissions.has('BAN_MEMBERS')) return message.channel.send(`> __Nincs megfelelő engedélyed a parancs használatához!__`); {
           let embed = new MessageEmbed()
           .setColor("#080707")
           .setDescription(`Neked ehhez nincs jogod!\n Szükséges jog: **${permission}**  :man_detective: `)
