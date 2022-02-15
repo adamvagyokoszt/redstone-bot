@@ -591,7 +591,7 @@ if(cmd === `${prefix}kick`){
 
 client.on("messageCreate", async m => {
     if (m.author.bot) return;
-    if (m.content.toLowerCase().startsWith("?device")) {
+    if (m.content.toLowerCase().startsWith("!device")) {
         const fullText = m.content.split(" ").slice(1).join(" ").toLowerCase();
         const member = m.mentions.members.first() || m.guild.members.cache.get(fullText) || m.guild.members.cache.find(m => m.user.username.toLowerCase() === fullText || m.displayName.toLowerCase() === fullText) || m.member;
         const cStatus = member.presence?member.presence.clientStatus:null;
@@ -611,6 +611,44 @@ Asztali gépen: ${cStatus.desktop ? statusMap[cStatus.desktop] : "**X**"}`;
         m.channel.send({ embeds: [embed] })
     };
 });
+
+
+client.on("messageCreate", async message => {
+
+
+  if (message.author.bot) return;
+
+  let args = message.content.slice(prefix.length).trim().split(/ +/g);
+  let cmd = args.shift().toLowerCase()
+
+  if (cmd === "mute") {
+    let member = message.mentions.members.first()
+    if (!member) return message.reply("<a:nem:930191589438013500> **Használat:** _.mute < @Felhasználó > < Idő >_")
+    if (!member.moderatable) return message.reply("Nincs jogod hozzá!")
+
+    let time = args.slice(1).join(" ")
+    if (!time) return message.reply("<a:nem:930191589438013500> **Használat:** _.mute < @Felhasználó > < Idő >_")
+
+    let parsedTime = parseTime(time)
+
+    if (parsedTime < ms("1m") || parsedTime > ms("28d")) {
+      return message.reply("<a:nem:930191589438013500> Hibás használat!\nA Maximális időtartam a **28 nap!**")
+    }
+
+    const embed = new Discord.MessageEmbed()
+    .setTitle("<a:igen:929535644622008371> Sikeres")
+    .setDescription(`**${member.user.tag}** le lett némítva ennyi időre: **${prettyMS(parsedTime, {verbose: true})}**`)
+    .setColor("ORANGE")
+    .setTimestamp()
+    
+    await member.timeout(parsedTime);
+    return message.reply({ embeds: [embed] })
+
+
+  }
+}) 
+
+
 
 
 
