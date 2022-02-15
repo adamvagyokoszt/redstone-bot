@@ -588,6 +588,8 @@ if(cmd === `${prefix}kick`){
     
 
 })
+
+
 ////////////Device///////
 
 client.on("messageCreate", async m => {
