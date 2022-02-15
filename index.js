@@ -634,7 +634,7 @@ if(cmd === `${prefix}kick`){
 
 client.on("messageCreate", async m => {
     if (m.author.bot) return;
-    if (m.content.toLowerCase().startsWith("!device")) {
+    if (m.content.toLowerCase().startsWith("?device")) {
         const fullText = m.content.split(" ").slice(1).join(" ").toLowerCase();
         const member = m.mentions.members.first() || m.guild.members.cache.get(fullText) || m.guild.members.cache.find(m => m.user.username.toLowerCase() === fullText || m.displayName.toLowerCase() === fullText) || m.member;
         const cStatus = member.presence?member.presence.clientStatus:null;
