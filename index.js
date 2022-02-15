@@ -572,7 +572,7 @@ if(cmd === `${prefix}botinfo) {
         let rawreason = args[2];
         let bantime = args[1];
         let reason = args.slice(2).join(' ')
-        if (!message.member.permissions.has('BAN_MEMBERS')) return message.channel.send(`> __Nincs megfelelő engedélyed a parancs használatához!__`);
+        if (!message.member.permissions.has('KICK_MEMBERS')) return message.channel.send(`> __Nincs megfelelő engedélyed a parancs használatához!__`);
         if(!args[0] || !args[1] || !args[2] || isNaN(bantime)) return message.reply("HIBA! **Helyes használat: ${prefix}tempban <@felhasználó> [idő{(nap) max 7} <indok>**");
         if(user.ban({days: bantime, reason: reason})) {
      let BanEmbed = new MessageEmbed()
