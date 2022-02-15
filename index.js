@@ -26,30 +26,22 @@ client.on("ready", async() => {
     }, 5000)
 })
 /////) Üdvözlő rendszer/////////
-client.on("GUILD_MEMBER_ADD", (member) => {
-    const rulesChanel = member.guild.rulesChannelID;
-    const channelId = "730430575046819914"
 
+const welcomeChannelId = "730430575046819914"
 
-    if(!channelId) return;
-    if(!rulesChanel) return;
+client.on("guildMemberAdd", async (member) => {
+    const img = await generateImage(member)
+    member.guild.channels.cache.get(welcomeChannelId).send({
+        content: `<@${member.id}> Üdvözlünk a szerveren!`,
+    })
+});
 
-    const messages = `Szia <@${member.id}>! Üdv itt a Rolix Fan klub szerveren. Szabályzat:${member.guild.channels.cache.get(rulesChanel).toString()}`
+client.on("guildMemberRemove", async (member) => {
+    member.guild.channels.cache.get(welcomeChannelId).send({
+        content: `<@${member.id}> Kilépett a szerverről!`,
+    })
+}); 
 
-    const channele = member.guild.channels.cache.get(channelID);
-    channele.send(messages)
-})
-client.on("GUILD_MEMBER_REMOVE", (member) => {
-    const channelId = "730430575046819914"
-
-
-    if(!channelId) return;
-
-
-    const  message = `Viszlát <${member.user.tag}>! Remélem vissza jössz egyszer!`
-    const channel = member.guild.channels.cache.get(channelID);
-    channel.send(message)
-}) 
 /////Economy//////
 client.on("message", async message => {
     let MessageArray = message.content.split(" ");
