@@ -1,4 +1,4 @@
-const { Client, Intents, MessageEmbed, Permissions  } = require("discord.js")
+const { Client, Intents, MessageEmbed, Permissions, CommandInteraction, ReactionUserManager  } = require("discord.js")
 const client = new Client({ intents: [Intents.FLAGS.GUILDS,Intents.FLAGS.DIRECT_MESSAGE_TYPING,Intents.FLAGS.GUILD_MEMBERS,Intents.FLAGS.GUILD_PRESENCES,Intents.FLAGS.GUILD_MESSAGES] });
 const botconfig = require("./botconfig.json")
 const money = require("./money.json")
@@ -465,15 +465,7 @@ message.channel.send({ embeds: [embed] })
     
 
  
-I guess this giveaway command works for me - Discord.js V13
 
-don't forget to have npm i ms installed if you haven't already
-const { Client, Intents, CommandInteraction, ReactionUserManager } = require('discord.js'); 
-const INTENTS = new Intents(32767); // 32767 == full intents, calculated from intent calculator 
-
-const client = new Client({
-  intents: INTENTS
-});
 
 
 
