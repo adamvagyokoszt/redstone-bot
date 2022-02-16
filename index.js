@@ -618,7 +618,7 @@ client.login("CHANGEME").then(() => console.log("Logged in.")).catch(console.err
  
 const xpfile = require(`./xp.json`)
 
-    bot.on("message", function(message){
+    client.on("message", function(message){
         if(message.author.bot) return;
         let addXP = Math.floor(Math.random() * 8) + 3;
 
