@@ -97,9 +97,14 @@ client.on("message", async message => {
                 user_id: pay_user.id
             }
 
-         
-
-        message.channel.send(`Sikeresen átutaltál <@${pay_user.id}> számlájára ${pay_money}FT-ot!`)
+         let addEmbed = new MessageEmbed()
+            .setTitle('Pénzutalás')
+            .addField(`Sikeresen hozzáadtál <@${pay_user.id}> számlájára ${pay_money}FT-ot!`)
+            .setColor("RANDOM")
+            .setTimestamp(message.createdAt)
+            .setFooter(clientname)
+        message.channel.send({ embeds: [addEmbed] })
+           
 
         fs.writeFile("./money.json", JSON.stringify(money), (err) => {
             if(err) console.log(err);
@@ -112,7 +117,7 @@ client.on("message", async message => {
     if(cmd === `${prefix}ftvon`){
         if (!message.member.permissions.has('ADMINISTRATOR')) return message.channel.send(`> __Nincs megfelelő engedélyed a parancs használatához!__`);
         let pay_money = Math.round(args[0]*100)/100
-        if(isNaN(pay_money)) return message.reply(`A parancs helyes használata: ${prefix}ftadd <összeg> <@név>`)
+        if(isNaN(pay_money)) return message.reply(`A parancs helyes használata: ${prefix}ftvon <összeg> <@név>`)
         
         let pay_user = message.mentions.members.first();
 
@@ -129,15 +134,21 @@ client.on("message", async message => {
                 user_id: pay_user.id
             }
 
-         
+         let addEmbed = new MessageEmbed()
+            .setTitle('Pénzutalás')
+            .addField(`Sikeresen levontál <@${pay_user.id}> számlájáról ${pay_money}FT-ot!`)
+            .setColor("RANDOM")
+            .setTimestamp(message.createdAt)
+            .setFooter(clientname)
+        message.channel.send({ embeds: [addEmbed] })
+           
 
-        message.channel.send(`Sikeresen levontál <@${pay_user.id}> számlájára ${pay_money}FT-ot!`)
 
         fs.writeFile("./money.json", JSON.stringify(money), (err) => {
             if(err) console.log(err);
         });
     } else {
-        message.reply(`A parancs helyes használata: ${prefix}ftadd <összeg> <@név>`)
+        message.reply(`A parancs helyes használata: ${prefix}ftvon <összeg> <@név>`)
     }
 }
         
