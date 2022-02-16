@@ -330,6 +330,8 @@ if(cmd === `${prefix}vasarol-vip+`){
     }
 
 
+
+
 if(message.content.includes("https://" || "http://"
 )) {
 if (message.member.permissions.has('KICK_MEMBERS')) return message.channel.send(`> __Nincs megfelelő engedélyed a parancs használatához!__`);
@@ -613,6 +615,41 @@ Asztali gépen: ${cStatus.desktop ? statusMap[cStatus.desktop] : "**X**"}`;
     };
 });
 client.login("CHANGEME").then(() => console.log("Logged in.")).catch(console.error); 
+ 
+const xpfile = require(`./xp.json`)
+
+    bot.on("message", function(message){
+        if(message.author.bot) return;
+        let addXP = Math.floor(Math.random() * 8) + 3;
+
+        if(!xpfile[message.author.id]){
+            xpfile[message.author.id] = {
+                xp: 0,
+                level: 1,
+                regxp: 100
+            }
+
+            fs.writeFileSync(`./DB/xp.json`,JSON.stringify(xpfile),function(err){
+                if(err) console.log(err)
+            })
+        }
+
+        xpfile[message.author.id].xp += addXP
+
+        if(xpfile[message.author.id].xp > xpfile[message.author.id].regxp){
+            xpfile[message.author.id].xp -= xpfile[message.author.id].regxp 
+            xpfile[message.author.id].regxp *=1.25
+            xpfile[message.author.id].regxp = Math.floor(xpfile[message.author.id].regxp)
+            xpfile[message.author.id].level += 1
+
+            message.reply(`Gratulálok elérted ezt a szintet: **${xpfile[message.author.id].level}** 👌 🎉`)
+        }
+
+        fs.writeFileSync(`./DB/xp.json`,JSON.stringify(xpfile),function(err){
+            if(err) console.log(err)
+        })
+    }); 
+
 
 
 
