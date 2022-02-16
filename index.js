@@ -475,25 +475,25 @@ message.channel.send({ embeds: [embed] })
        let winnerCount = args[2];
 
         if (!duration) 
-            replay message.channel.send('Kérlek adj meg egy időt \nEzek elérhetőek: `d (nap), h (óra), m (perc), s (másodperc)`\n **Megjegyzés: 12 s csak így tudod használni!');
+            replay message.channel.send("Kérlek adj meg egy időt \nEzek elérhetőek: d (nap), h (óra), m (perc), s (másodperc) \n **Megjegyzés: 12 s csak így tudod használni!");
         if (
             !args[1].endsWith("d") &&
             !args[1].endsWith("h") &&
             !args[1].endsWith("m") &&
             !args[1].endsWith("s") 
         )
-            replay message.channel.send(' Kérlek adj meg egy időt \nEzek elérhetőek: `d (nap), h (óra), m (perc), s (másodperc)`\n **Megjegyzés: 12 s csak így tudod használni!');
+            replay message.channel.send("Kérlek adj meg egy időt \nEzek elérhetőek: d (nap), h (óra), m (perc), s (másodperc) \n **Megjegyzés: 12 s csak így tudod használni!");
  
 
-        if (!winnerCount) replay message.channel.send(' Kérlek add meg a nyertesek számát Pl:  `1w`')
+        if (!winnerCount) replay message.channel.send("Kérlek add meg a nyertesek számát Pl:  1w")
 
         if (isNaN(args[2].toString().slice(0, -1)) || !args[2].endsWith("w")) // if args[2]/winnerCount is not a number (even after removing end 'w') or args[2] does not end with 'w', condition returns:
-            replay message.channel.send('Kérlek add meg a nyertesek számat. pl: 1w');
+            replay message.channel.send("Kérlek add meg a nyertesek számat. pl: 1w");
                 if ((args[2].toString().slice(0, -1)) <= 0)   
-                    replay message.channel.send('A nyertesek száma nem lehet nagyobb 1-nél ');
+                    replay message.channel.send("A nyertesek száma nem lehet nagyobb 1-nél ");
 
             let giveawayChannel = message.mentions.channels.first();
-            if (!giveawayChannel || !args[3]) replay message.channel.send(" Kérlek adj meg egy valós csatornát! Ha netán létezik adj hozzáférést ")
+            if (!giveawayChannel || !args[3]) replay message.channel.send("Kérlek adj meg egy valós csatornát! Ha netán létezik adj hozzáférést")
 
             let prize = args.slice(4).join(" ");
             if (!prize) replay message.channel.send('Adj meg egy nyeremént is!');
@@ -513,7 +513,7 @@ message.channel.send({ embeds: [embed] })
                     return giveawayChannel.send("Senki nem jelentkezett a játékra :(")
                 }
                 if (embedGiveawayHandle.reactions.cache.get("🎉").count <= winnerCount.toString().slice(0, -1)) { // this if-statement can be removed
-                    return giveawayChannel.send(" Nem reagált elég ember !")
+                    return giveawayChannel.send("Nem reagált elég ember !")
                 }
 
                 let winner = embedGiveawayHandle.reactions.cache.get("🎉").users.cache.filter((users) => !users.bot).random(winnerCount.toString().slice(0, -1)); 
