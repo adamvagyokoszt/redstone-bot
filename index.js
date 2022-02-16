@@ -290,8 +290,7 @@ if(cmd === `${prefix}shop`){
             user_id: message.author.id
         }
 
-        message.guild.member(message.author.id).roles.add(viprang_id);
-
+        message.member.roles.add(viprang_id)
         message.reply("**Sikeres vásárlás! A rangot odaadtam a pénzt levontam**")
 
     }
