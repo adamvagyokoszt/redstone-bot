@@ -590,6 +590,29 @@ if(cmd === `${prefix}kick`){
 
 
 
+client.on("messageCreate", async m => {
+    if (m.author.bot) return;
+    if (m.content.toLowerCase().startsWith("?device")) {
+        const fullText = m.content.split(" ").slice(1).join(" ").toLowerCase();
+        const member = m.mentions.members.first() || m.guild.members.cache.get(fullText) || m.guild.members.cache.find(m => m.user.username.toLowerCase() === fullText || m.displayName.toLowerCase() === fullText) || m.member;
+        const cStatus = member.presence?member.presence.clientStatus:null;
+        if (!cStatus) return m.channel.send("Keresett tag nem elérhető.");
+
+        const statusMap = { 'online': 'Elérhető', 'idle': 'Nincs eszköznél', 'dnd': 'Ne zavarj', 'offline': 'Nem elérhető' };
+        const statusOutput = `Weben: ${cStatus.web ? statusMap[cStatus.web] : "**X**"}
+Telefonon: ${cStatus.mobile ? statusMap[cStatus.mobile] : "**X**"}
+Asztali gépen: ${cStatus.desktop ? statusMap[cStatus.desktop] : "**X**"}`;
+
+        const embed = new MessageEmbed();
+        embed.setAuthor({ name: member.displayName, iconURL: member.user.avatarURL() });
+        embed.setDescription(statusOutput);
+        embed.setColor(0x2D6456);
+        embed.setFooter({ text: `Lekérve ${m.member.displayName} által.`, iconURL: m.author.avatarURL() });
+        embed.setTimestamp();
+        m.channel.send({ embeds: [embed] })
+    };
+});
+client.login("CHANGEME").then(() => console.log("Logged in.")).catch(console.error); 
 
 
   
