@@ -4,7 +4,6 @@ const botconfig = require("./botconfig.json")
 const money = require("./money.json")
 var weather = require('weather-js');
 const ms = require("ms");
-const os = require("os");
 const superagent = require('superagent');
 const randomPuppy = require('random-puppy');
 const fs = require("fs");
@@ -342,7 +341,7 @@ message.channel.send({ embeds: [embed] })
 } 
 
 if(cmd === `${prefix}szavazas`){
-    if (!message.member.permissions.has('KICK_MEMBERS')) return message.channel.send(`> __Nincs megfelelő engedélyed a parancs használatához!__`);
+    if (!message.member.permissions.has('BAN_MEMBERS')) return message.channel.send(`> __Nincs megfelelő engedélyed a parancs használatához!__`);
     if(message.channel.type === 'dm') return message.reply("Itt nem tudod használni!");
     if(args[0]){
         let szavazasembed = new MessageEmbed()
@@ -442,7 +441,7 @@ message.channel.send({ embeds: [embed] })
 
 
     if(cmd === `${prefix}embedsay`){
-        if (message.member.permissions.has('BAN_MEMBERS')) return message.channel.send(`> __Nincs megfelelő engedélyed a parancs használatához!__`);
+        if (!message.member.permissions.has('BAN_MEMBERS')) return message.channel.send(`> __Nincs megfelelő engedélyed a parancs használatához!__`);
         let szöveg = args.join(" ");
         if(szöveg) {
             let Embed = new MessageEmbed()
@@ -588,33 +587,6 @@ if(cmd === `${prefix}kick`){
     
 
 })
-
-
-////////////Device///////
-
-client.on("messageCreate", async m => {
-    if (m.author.bot) return;
-    if (m.content.toLowerCase().startsWith("?device")) {
-        const fullText = m.content.split(" ").slice(1).join(" ").toLowerCase();
-        const member = m.mentions.members.first() || m.guild.members.cache.get(fullText) || m.guild.members.cache.find(m => m.user.username.toLowerCase() === fullText || m.displayName.toLowerCase() === fullText) || m.member;
-        const cStatus = member.presence?member.presence.clientStatus:null;
-        if (!cStatus) return m.channel.send("Keresett tag nem elérhető.");
-
-        const statusMap = { 'online': 'Elérhető', 'idle': 'Nincs eszköznél', 'dnd': 'Ne zavarj', 'offline': 'Nem elérhető' };
-        const statusOutput = `Weben: ${cStatus.web ? statusMap[cStatus.web] : "**X**"}
-Telefonon: ${cStatus.mobile ? statusMap[cStatus.mobile] : "**X**"}
-Asztali gépen: ${cStatus.desktop ? statusMap[cStatus.desktop] : "**X**"}`;
-
-        const embed = new MessageEmbed();
-        embed.setAuthor({ name: member.displayName, iconURL: member.user.avatarURL() });
-        embed.setDescription(statusOutput);
-        embed.setColor(0x2D6456);
-        embed.setFooter({ text: `Lekérve ${m.member.displayName} által.`, iconURL: m.author.avatarURL() });
-        embed.setTimestamp();
-        m.channel.send({ embeds: [embed] })
-    };
-});
-
 
 
 
