@@ -534,7 +534,7 @@ message.channel.send({ embeds: [embed] })
 
         } 
     }
-})
+
 
 
 if(cmd === `${prefix}calc`){
