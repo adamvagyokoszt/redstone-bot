@@ -475,32 +475,33 @@ message.channel.send({ embeds: [embed] })
        let winnerCount = args[2];
 
         if (!duration) 
-            return message.channel.send('Please provide a duration for the giveaway!\nThe abbreviations for units of time are: `d (days), h (hours), m (minutes), s (seconds)`');
+            replay message.channel.send('Kérlek adj meg egy időt \nEzek elérhetőek: `d (nap), h (óra), m (perc), s (másodperc)`\n **Megjegyzés: 12 s csak így tudod használni!');
         if (
             !args[1].endsWith("d") &&
             !args[1].endsWith("h") &&
             !args[1].endsWith("m") &&
             !args[1].endsWith("s") 
         )
-            return message.channel.send('Please provide a duration for the giveaway!\nThe abbreviations for units of time are: `d (days), h (hours), m (minutes), s (seconds)`');
+            replay message.channel.send(' Kérlek adj meg egy időt \nEzek elérhetőek: `d (nap), h (óra), m (perc), s (másodperc)`\n **Megjegyzés: 12 s csak így tudod használni!');
+ 
 
-        if (!winnerCount) return message.channel.send('Please provide the number of winners for the giveaway! E.g. `1w`')
+        if (!winnerCount) replay message.channel.send(' Kérlek add meg a nyertesek számát Pl:  `1w`')
 
         if (isNaN(args[2].toString().slice(0, -1)) || !args[2].endsWith("w")) // if args[2]/winnerCount is not a number (even after removing end 'w') or args[2] does not end with 'w', condition returns:
-            return message.channel.send('Please provide the number of winners for the giveaway! E.g. `3w`');
+            replay message.channel.send('Kérlek add meg a nyertesek számat. pl: 1w');
                 if ((args[2].toString().slice(0, -1)) <= 0)   
-                    return message.channel.send('The number of winners cannot be less than 1!');
+                    replay message.channel.send('A nyertesek száma nem lehet nagyobb 1-nél ');
 
             let giveawayChannel = message.mentions.channels.first();
-            if (!giveawayChannel || !args[3]) return message.channel.send("Please provide a valid channel to start the giveaway!")
+            if (!giveawayChannel || !args[3]) replay message.channel.send(" Kérlek adj meg egy valós csatornát! Ha netán létezik adj hozzáférést ")
 
             let prize = args.slice(4).join(" ");
-            if (!prize) return message.channel.send('Please provide a prize to start the giveaway!');
+            if (!prize) replay message.channel.send('Adj meg egy nyeremént is!');
 
             let startGiveawayEmbed = new MessageEmbed()
-                .setTitle("🎉 GIVEAWAY 🎉")
-                .setDescription(`${prize}\n\nReact with 🎉 to participate in the giveaway!\nWinners: **${winnerCount.toString().slice(0, -1)}**\nTime Remaining: **${duration}**\nHosted By: **${message.author}**`)
-                .setColor('#FFFFFF')
+                .setTitle("🎉 Nyereményjáték 🎉")
+                .setDescription(`Nyeremény: ${prize}\n\n Reagálj a 🎉 emojival hogy jelentkezz a játékra!\nNyertesek: **${winnerCount.toString().slice(0, -1)}**\nIdő: **${duration}**\nIndította: **${message.author}**`)
+                .setColor('RED')
                 .setTimestamp(Date.now() + ms(args[1])) 
                 .setFooter("Giveaway ends"); 
 
@@ -509,25 +510,25 @@ message.channel.send({ embeds: [embed] })
 
             setTimeout(() => {
                 if (embedGiveawayHandle.reactions.cache.get("🎉").count <= 1) {
-                    return giveawayChannel.send("Nobody joined the giveaway :(")
+                    return giveawayChannel.send("Senki nem jelentkezett a játékra :(")
                 }
                 if (embedGiveawayHandle.reactions.cache.get("🎉").count <= winnerCount.toString().slice(0, -1)) { // this if-statement can be removed
-                    return giveawayChannel.send("There's not enough people in the giveaway to satisfy the number of winners!")
+                    return giveawayChannel.send(" Nem reagált elég ember !")
                 }
 
                 let winner = embedGiveawayHandle.reactions.cache.get("🎉").users.cache.filter((users) => !users.bot).random(winnerCount.toString().slice(0, -1)); 
 
                 const endedEmbedGiveaway = new MessageEmbed()
-                .setTitle("🎉 GIVEAWAY 🎉")
-                .setDescription(`${prize}\n\nWinner(s): ${winner}\nHosted By: **${message.author}**\nWinners: **${winnerCount.toString().slice(0, -1)}**\nParticipants: **${embedGiveawayHandle.reactions.cache.get("🎉").count - 1}**\nDuration: **${duration}**`)
-                .setColor('#FFFFFF')
+                .setTitle("🎉 Nyereményjáték 🎉")
+                .setDescription(`Nyerény${prize}\n\nNyertes(sek): ${winner}\nIndította: **${message.author}**\nNyertes: **${winnerCount.toString().slice(0, -1)}**\nRésztvevők: **${embedGiveawayHandle.reactions.cache.get("🎉").count - 1}**\nIdő: **${duration}**`)
+                .setColor('RED')
                 .setTimestamp(Date.now() + ms(args[1]))  
-                .setFooter("Giveaway ended"); 
+                .setFooter("Nyereményjáték vége"); 
 
                 embedGiveawayHandle.edit({embeds:[endedEmbedGiveaway]}); 
                 const congratsEmbedGiveaway = new MessageEmbed()
-                .setDescription(`🥳 Congratulations ${winner}! You just won **${prize}**!`)
-                .setColor('#FFFFFF')
+                .setDescription(`🥳 Gratulálok ${winner}! Nyertél! Nyereményed **${prize}**!`)
+                .setColor('RED')
 
                 giveawayChannel.send({embeds: [congratsEmbedGiveaway]}).catch(console.error); 
             }, ms(args[1]));
