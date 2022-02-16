@@ -97,13 +97,8 @@ client.on("message", async message => {
                 user_id: pay_user.id
             }
 
-         let addEmbed = new MessageEmbed()
-            .setTitle('Pénzutalás')
-            .addField(`Sikeresen hozzáadtál <@${pay_user.id}> számlájára ${pay_money}FT-ot!`)
-            .setColor("RANDOM")
-            .setTimestamp(message.createdAt)
-            .setFooter(clientname)
-        message.channel.send({ embeds: [addEmbed] })
+         
+        message.channel.send(`Sikeresen hozzáadtál <@${pay_user.id}> számlájára ${pay_money}FT-ot!`)
            
 
         fs.writeFile("./money.json", JSON.stringify(money), (err) => {
@@ -134,13 +129,8 @@ client.on("message", async message => {
                 user_id: pay_user.id
             }
 
-         let addEmbed = new MessageEmbed()
-            .setTitle('Pénzutalás')
-            .addField(`Sikeresen levontál <@${pay_user.id}> számlájáról ${pay_money}FT-ot!`)
-            .setColor("RANDOM")
-            .setTimestamp(message.createdAt)
-            .setFooter(clientname)
-        message.channel.send({ embeds: [addEmbed] })
+         
+        message.channel.send(`Sikeresen levontál <@${pay_user.id}> számlájáról ${pay_money}FT-ot!`)
            
 
 
