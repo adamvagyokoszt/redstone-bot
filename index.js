@@ -471,7 +471,8 @@ message.channel.send({ embeds: [embed] })
 
     if ((message.content.startsWith(`${prefix}giveaway`))) { // this condition can be changed to any command you'd like, e.g. `${prefix}gstart`
           if (!message.member.permissions.has('ADMINISTRATOR')) return message.channel.send(`> __Nincs megfelelő engedélyed a parancs használatához!__`); { 
-        let winnerCount = args[2];
+       let duration = args[1];
+       let winnerCount = args[2];
 
         if (!duration) 
             return message.channel.send('Please provide a duration for the giveaway!\nThe abbreviations for units of time are: `d (days), h (hours), m (minutes), s (seconds)`');
