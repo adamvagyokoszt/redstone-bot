@@ -629,7 +629,7 @@ const xpfile = require(`./xp.json`)
                 regxp: 100
             }
 
-            fs.writeFileSync(`./DB/xp.json`,JSON.stringify(xpfile),function(err){
+            fs.writeFileSync(`./xp.json`,JSON.stringify(xpfile),function(err){
                 if(err) console.log(err)
             })
         }
@@ -645,7 +645,7 @@ const xpfile = require(`./xp.json`)
             message.reply(`Gratulálok elérted ezt a szintet: **${xpfile[message.author.id].level}** 👌 🎉`)
         }
 
-        fs.writeFileSync(`./DB/xp.json`,JSON.stringify(xpfile),function(err){
+        fs.writeFileSync(`./xp.json`,JSON.stringify(xpfile),function(err){
             if(err) console.log(err)
         })
     }); 
