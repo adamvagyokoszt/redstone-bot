@@ -440,7 +440,6 @@ message.channel.send({ embeds: [embed] })
 
             if(cmd === `${prefix}giveaway`){
             if (!message.member.permissions.has('ADMINISTRATOR'))
-            const messageArray = message.content.split(" ");
              return message.channel.send("Ehhez a parancshoz nincs jogod!")
 
             let tárgy = "";
