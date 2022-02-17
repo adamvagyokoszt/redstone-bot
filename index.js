@@ -28,7 +28,7 @@ client.on("ready", async() => {
 ///////handler///////
 
 client.on("message", async message => {
-    let prefix = botconfig.prefix;
+    let prefix = "r."
 
     if(message.author.client) return;
     if(!message.guild) return;
