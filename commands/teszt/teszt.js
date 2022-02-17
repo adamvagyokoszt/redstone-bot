@@ -3,7 +3,7 @@ module.exports = {
     name: "teszt",
     category: "teszt kategória",
     description: "teszt command",
-    run: async (bot, message, args) => {
+    run: async (client, message, args) => {
 
         message.channel.send("sadksfsnafsfaakfbjsfbyjfgasgf")
     }
