@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const config = require("./botconfig.json");
+
 module.exports = {
     name: "teszt",
     category: "teszt kategória",
