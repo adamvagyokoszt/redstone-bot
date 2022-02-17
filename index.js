@@ -7,6 +7,7 @@ const ms = require("ms");
 const superagent = require('superagent');
 const randomPuppy = require('random-puppy');
 const fs = require("fs");
+const simplydjs = require("simply-djs")
 let clientname = "Redstone Bot"
 
 client.on("ready", async() => {
