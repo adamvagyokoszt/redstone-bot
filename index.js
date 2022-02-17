@@ -416,17 +416,19 @@ if(cmd === `${prefix}giveaway`){
         }
 
         var Gembed = new MessageEmbed()
+     
         .setColor("RANDOM")
         .setTitle("Nyereményjáték!!!!")
         .setDescription(`**${tárgy}**`)
         .addField("`Időtartam:`", ms(ms(idő), {long: true}), true)
         .setFooter("A jelentkezéshe reagálj ezzel: 🎉")
-        var embedSend = await message.channel.send({ embeds: [Gembed] });
-        embedSend.react("🎉");
+        var embedSend = await message.channel.send({ embeds: [Gembed] }).then(async msg => {
+            await msg.react("🎉")
+        
 
         setTimeout(async() => {
             try{
-                const peopleReactedBOT =  await embedSend.reactions.cache.get("🎉").users.fetch();
+                const peopleReactedBOT =  await msg.reactions.cache.get("🎉").users.fetch();
                 var peopleReacted = peopleReactedBOT.array().filter(u => u.id !== bot.user.id);
             }catch(e){
                 return message.channel.send(`Hiba törtét a **${tárgy}** sorsolása során! Hiba: `+"`"+e+"`")
