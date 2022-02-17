@@ -536,6 +536,16 @@ message.channel.send({ embeds: [embed] })
         } 
     }
 
+if (cmd === `${prefix}kérdés`) {
+    if(!kerdes) {
+        return message.channel.send("Írd le a kérdésedet!")
+      } else {
+          let replies = [`Igen`, `Nem`, `Talán`, `Nem mondom meg`, `Kérdezd meg másoktól`, `Ne zaklass! >;(`]
+          let result = Math.floor((Math.random() * replies.length));
+
+          message.channel.send(`Kérdés: ${kerdes}\n Válasz: ${replies[result]}`);
+      }
+} 
 
 
 if(cmd === `${prefix}calc`){
