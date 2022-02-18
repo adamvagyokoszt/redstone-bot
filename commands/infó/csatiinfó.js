@@ -22,5 +22,5 @@ module.exports = {
             .addField("**Csatorna Leírás**", `${channel.topic || "Nincs leírás"}`)
             .addField("**Csatorna készítve ekkor**", channel.createdAt)
             .setColor("GREEN")
-        message.channel.send(channelembed);
+        message.channel.send({ embed: [channelembed] });
     } 
