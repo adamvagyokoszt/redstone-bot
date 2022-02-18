@@ -463,7 +463,7 @@ message.channel.send({ embeds: [embed] })
     if(cmd === `${prefix}botping`) {
         message. channel. send("Pinging..."). then(m =>{
         let ping = m. createdTimestamp - message. createdTimestamp;
-        let clientPing = Math. round(bot. pi);
+        let clientPing = Math. round(client. pi);
         m.edit(` Redstone bot pingje:\n ${ping}ms`);
         });
       }
