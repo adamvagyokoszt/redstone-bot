@@ -1,4 +1,4 @@
-const { Client, Intents, MessageEmbed, Permissions, CommandInteraction, ReactionUserManager, MessageActionRow, MessageButton } = require("discord.js")
+const { Client, Intents, MessageEmbed, Permissions, CommandInteraction, ReactionUserManager, MessageActionRow, MessageButton, Collection } = require("discord.js")
 const client = new Client({ intents: [Intents.FLAGS.GUILDS,Intents.FLAGS.DIRECT_MESSAGE_TYPING,Intents.FLAGS.GUILD_MEMBERS,Intents.FLAGS.GUILD_PRESENCES,Intents.FLAGS.GUILD_MESSAGES] });
 const botconfig = require("./botconfig.json")
 const money = require("./money.json")
@@ -27,8 +27,8 @@ client.on("ready", async() => {
     }, 5000)
 })
 ///////handler///////
-client.commands = new Discord.Collection();
-client.aliases = new Discord.Collection();
+client.commands = new Collection();
+client.aliases = new Collection();
 
 client.categories = fs.readdirSync("./commands/");
 
