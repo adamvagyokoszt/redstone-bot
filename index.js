@@ -32,12 +32,12 @@ client.aliases = new Collection();
 
 client.categories = fs.readdirSync("./commands/");
 
-["commands"].forEach(handler => {
+["command"].forEach(handler => {
     require(`./handlers/${handler}`)(bot)
 });
 
 client.on("message", async message => {
-    let prefix = "r."
+    let prefix = botconfig.prefix;
 
     if(message.author.client) return;
     if(!message.guild) return;
