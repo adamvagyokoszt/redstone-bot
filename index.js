@@ -33,7 +33,7 @@ client.aliases = new Collection();
 client.categories = fs.readdirSync("./commands/");
 
 ["command"].forEach(handler => {
-    require(`./handlers/${handler}`)(bot)
+    require(`./handlers/${handler}`)(client)
 });
 
 client.on("message", async message => {
