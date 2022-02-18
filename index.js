@@ -27,6 +27,14 @@ client.on("ready", async() => {
     }, 5000)
 })
 ///////handler///////
+client.commands = new Discord.Collection();
+client.aliases = new Discord.Collection();
+
+client.categories = fs.readdirSync("./commands/");
+
+["commands"].forEach(handler => {
+    require(`./handlers/${handler}`)(bot)
+});
 
 client.on("message", async message => {
     let prefix = "r."
