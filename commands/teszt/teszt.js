@@ -5,7 +5,7 @@ module.exports = {
     category: "teszt kategória",
     description: "teszt command",
     run: async (client, message, args) => {
-          channel.send({ content: 'Hello!'] });
+          channel.send({ content: 'Hello!' });
     }
 
 }
