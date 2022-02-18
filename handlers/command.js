@@ -6,7 +6,7 @@ const ascii = require("ascii-table");
 let table = new ascii("Parancsok");
 table.setHeading("Parancs", "Állapot");
 
-module.export = (client) => {
+module.exports = (client) => {
 
   readdirSync("./commands/").forEach(dir => {
 
