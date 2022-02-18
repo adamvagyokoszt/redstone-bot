@@ -37,7 +37,7 @@ client.categories = fs.readdirSync("./commands/");
 });
 
 client.on("message", async message => {
-    let prefix = botconfig.prefix;
+    let prefix = "r."
 
     if(message.author.client) return;
     if(!message.guild) return;
