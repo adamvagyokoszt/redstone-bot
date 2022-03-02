@@ -27,15 +27,7 @@ client.on("ready", async() => {
     }, 5000)
 })
 ///////handler///////
-module.exports = client;
 
-// Global Variables
-client.commands = new Collection();
-client.slashCommands = new Collection();
-client.config = require("./botconfig.json");
-
-// Initializing the project
-require("./handler")(client);
 
 /////) Üdvözlő rendszer/////////
 
