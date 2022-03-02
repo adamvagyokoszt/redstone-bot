@@ -27,34 +27,15 @@ client.on("ready", async() => {
     }, 5000)
 })
 ///////handler///////
+module.exports = client;
+
+// Global Variables
 client.commands = new Collection();
-client.aliases = new Collection();
+client.slashCommands = new Collection();
+client.config = require("./config.json");
 
-client.categories = fs.readdirSync("./commands/");
-
-["command"].forEach(handler => {
-    require(`./handlers/${handler}`)(client)
-});
-
-client.on("message", async message => {
-    let prefix = "r."
-
-    if(message.author.client) return;
-    if(!message.guild) return;
-    if(!message.content.startsWith(prefix)) return;
-    if(!message.member) message.member = await message.guild.fetchMember(message)
-
-    const args = message.content.slice(prefix.length).trim().split(/ +/g);
-    const cmd = args.shift().toLowerCase();
-
-    if(cmd.length === 0) return;
-
-    let command = client.commands.get(cmd);
-    if(!command) command = client.commands.get(client.aliases.get(cmd));
-
-    if(command)
-    command.run(client, message, args);
-});
+// Initializing the project
+require("./handler")(client);
 
 /////) Üdvözlő rendszer/////////
 
